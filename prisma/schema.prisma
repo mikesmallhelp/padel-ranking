@@ -28,3 +28,12 @@ model User {
   posts         Post[]
   @@map(name: "users")
 }
+
+model Player {
+  id            String       @default(cuid()) @id
+  name          String
+  games         Int
+  points        Int
+  createdAt     DateTime  @default(now()) @map(name: "created_at")
+  updatedAt     DateTime  @updatedAt @map(name: "updated_at")
+}

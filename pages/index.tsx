@@ -14,7 +14,10 @@ export const getStaticProps: GetStaticProps = async () => {
     },
   });
 
-  console.log('Mika: ' + JSON.stringify(feed));
+  const players = await prisma.player.findMany();
+
+  console.log('Mika: feed: ' + JSON.stringify(feed));
+  console.log('Mika: players: ' + JSON.stringify(players));
 
   return {
     props: { feed },
