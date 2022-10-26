@@ -1,7 +1,7 @@
 import React from "react"
 import { GetStaticProps } from "next"
 import Layout from "../components/Layout"
-import Post, { PostProps } from "../components/Post"
+import Post, { PlayerProps } from "../components/Post"
 import prisma from '../lib/prisma';
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -20,13 +20,13 @@ export const getStaticProps: GetStaticProps = async () => {
   console.log('Mika: players: ' + JSON.stringify(players));
 
   return {
-    props: { feed },
+    props: { players },
     revalidate: 10,
   };
 };
 
 type Props = {
-  feed: PostProps[]
+  players: PlayerProps[]
 }
 
 const Blog: React.FC<Props> = (props) => {
@@ -35,10 +35,8 @@ const Blog: React.FC<Props> = (props) => {
       <div className="page">
         <h1>Public Feed</h1>
         <main>
-          {props.feed.map((post) => (
-            <div key={post.id} className="post">
-              <Post post={post} />
-            </div>
+          {props.players.map((player) => (
+            <div key={player.id}><span>{player.name}</span>&nbsp;<span>{player.points}</span></div>
           ))}
         </main>
       </div>

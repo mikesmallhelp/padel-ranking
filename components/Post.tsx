@@ -2,15 +2,11 @@ import React from "react";
 import Router from "next/router";
 import ReactMarkdown from "react-markdown";
 
-export type PostProps = {
+export type PlayerProps = {
   id: string;
-  title: string;
-  author: {
-    name: string;
-    email: string;
-  } | null;
-  content: string;
-  published: boolean;
+  name: string;
+  games: number;
+  points: number;
 };
 
 const Post: React.FC<{ post: PostProps }> = ({ post }) => {
