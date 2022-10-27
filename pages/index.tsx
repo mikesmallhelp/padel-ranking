@@ -1,6 +1,7 @@
 import React from "react"
 import { GetStaticProps } from "next"
 import prisma from '../lib/prisma';
+import Dashboard from "../components/Dashboard";
 
 export type PlayerProps = {
   id: string;
@@ -36,30 +37,7 @@ type Props = {
 
 const Blog: React.FC<Props> = (props) => {
   return (
-    <>
-      <div className="page">
-        <h1>Ranking</h1>
-        <main>
-          {props.players.map((player) => (
-            <div key={player.id}><span>{player.name}</span>&nbsp;<span>{player.points}</span></div>
-          ))}
-        </main>
-      </div>
-      <style jsx>{`
-        .post {
-          background: white;
-          transition: box-shadow 0.1s ease-in;
-        }
-
-        .post:hover {
-          box-shadow: 1px 1px 3px #aaa;
-        }
-
-        .post + .post {
-          margin-top: 2rem;
-        }
-      `}</style>
-    </>
+    <Dashboard/>
   )
 }
 
