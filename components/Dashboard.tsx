@@ -124,7 +124,7 @@ const DashboardContent: React.FC<Props> = (props) => {
               noWrap
               sx={{ flexGrow: 1 }}
             >
-              Padel pelit
+              Padel-pelit
             </Typography>
             <IconButton color="inherit">
               <Badge badgeContent={4} color="secondary">
