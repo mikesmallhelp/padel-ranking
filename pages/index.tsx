@@ -1,8 +1,13 @@
 import React from "react"
 import { GetStaticProps } from "next"
-import Layout from "../components/Layout"
-import Post, { PlayerProps } from "../components/Post"
 import prisma from '../lib/prisma';
+
+export type PlayerProps = {
+  id: string;
+  name: string;
+  games: number;
+  points: number;
+};
 
 export const getStaticProps: GetStaticProps = async () => {
   const feed = await prisma.post.findMany({
@@ -31,9 +36,9 @@ type Props = {
 
 const Blog: React.FC<Props> = (props) => {
   return (
-    <Layout>
+    <>
       <div className="page">
-        <h1>Public Feed</h1>
+        <h1>Ranking</h1>
         <main>
           {props.players.map((player) => (
             <div key={player.id}><span>{player.name}</span>&nbsp;<span>{player.points}</span></div>
@@ -54,7 +59,7 @@ const Blog: React.FC<Props> = (props) => {
           margin-top: 2rem;
         }
       `}</style>
-    </Layout>
+    </>
   )
 }
 
