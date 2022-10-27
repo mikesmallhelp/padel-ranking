@@ -8,8 +8,7 @@ export const getStaticProps: GetStaticProps = async () => {
   console.log('Mika: players: ' + JSON.stringify(players));
 
   return {
-    props: { players },
-    revalidate: 10,
+    props: { players }
   };
 };
 
