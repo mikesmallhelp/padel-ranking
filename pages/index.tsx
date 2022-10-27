@@ -22,8 +22,8 @@ export const getStaticProps: GetStaticProps = async () => {
 
   const players = await prisma.player.findMany();
 
-  console.log('Mika: feed: ' + JSON.stringify(feed));
-  console.log('Mika: players: ' + JSON.stringify(players));
+  console.log('Mika old: feed: ' + JSON.stringify(feed));
+  console.log('Mika old: players: ' + JSON.stringify(players));
 
   return {
     props: { players },
@@ -37,7 +37,7 @@ type Props = {
 
 const Blog: React.FC<Props> = (props) => {
   return (
-    <Dashboard/>
+    <Dashboard players = {props.players} />
   )
 }
 
