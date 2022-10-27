@@ -1,29 +1,11 @@
-import React from "react"
 import { GetStaticProps } from "next"
 import prisma from '../lib/prisma';
 import Dashboard from "../components/Dashboard";
-
-export type PlayerProps = {
-  id: string;
-  name: string;
-  games: number;
-  points: number;
-};
+import Player from '../types/Player';
 
 export const getStaticProps: GetStaticProps = async () => {
-  const feed = await prisma.post.findMany({
-    where: { published: false },
-    include: {
-      author: {
-        select: { name: true },
-      },
-    },
-  });
-
   const players = await prisma.player.findMany();
-
-  console.log('Mika old: feed: ' + JSON.stringify(feed));
-  console.log('Mika old: players: ' + JSON.stringify(players));
+  console.log('Mika: players: ' + JSON.stringify(players));
 
   return {
     props: { players },
@@ -31,14 +13,10 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-type Props = {
-  players: PlayerProps[]
-}
-
-const Blog: React.FC<Props> = (props) => {
+const DashboardContainer = ({ players }: { players: Player[] }) => {
   return (
-    <Dashboard players = {props.players} />
+    <Dashboard players={players} />
   )
 }
 
-export default Blog
+export default DashboardContainer;

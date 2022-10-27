@@ -19,7 +19,7 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { mainListItems } from './listItems';
 import Players from './Players';
-import { PlayerProps } from './Players';
+import Player from '../types/Player';
 
 function Copyright(props: any) {
   return (
@@ -86,7 +86,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
 const mdTheme = createTheme();
 
-const DashboardContent: React.FC<Props> = (props) => {
+const DashboardContent = ({ players }: { players: Player[] }) => {
   const [open, setOpen] = React.useState(true);
   const toggleDrawer = () => {
     setOpen(!open);
@@ -165,7 +165,7 @@ const DashboardContent: React.FC<Props> = (props) => {
             <Grid container spacing={3}>
               <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                  <Players players = {props.players} />
+                  <Players players={players} />
                 </Paper>
               </Grid>
             </Grid>
@@ -177,12 +177,8 @@ const DashboardContent: React.FC<Props> = (props) => {
   );
 }
 
-type Props = {
-  players: PlayerProps[]
-}
-
-const Dashboard: React.FC<Props> = (props) => {
-  return <DashboardContent players = {props.players} />;
+const Dashboard = ({ players }: { players: Player[] }) => {
+  return <DashboardContent players={players} />;
 }
 
 export default Dashboard;
