@@ -11,15 +11,11 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Badge from '@mui/material/Badge';
 import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
 import Link from '@mui/material/Link';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import { mainListItems } from './listItems';
-import Players from './Players';
-import Player from '../types/Player';
+import { menuItems } from './menuItems';
 
 function Copyright(props: any) {
   return (
@@ -86,7 +82,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
 const mdTheme = createTheme();
 
-const DashboardContent = ({ players }: { players: Player[] }) => {
+const Dashboard = ({ children, title }: { children: any, title: string }) => {
   const [open, setOpen] = React.useState(true);
   const toggleDrawer = () => {
     setOpen(!open);
@@ -121,13 +117,8 @@ const DashboardContent = ({ players }: { players: Player[] }) => {
               noWrap
               sx={{ flexGrow: 1 }}
             >
-              Padel-pelit
+              {title}
             </Typography>
-            <IconButton color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
           </Toolbar>
         </AppBar>
         <Drawer variant="permanent" open={open}>
@@ -145,7 +136,7 @@ const DashboardContent = ({ players }: { players: Player[] }) => {
           </Toolbar>
           <Divider />
           <List component="nav">
-            {mainListItems}
+            {menuItems}
           </List>
         </Drawer>
         <Box
@@ -162,23 +153,13 @@ const DashboardContent = ({ players }: { players: Player[] }) => {
         >
           <Toolbar />
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-            <Grid container spacing={3}>
-              <Grid item xs={12}>
-                <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                  <Players players={players} />
-                </Paper>
-              </Grid>
-            </Grid>
+            {children}
             <Copyright sx={{ pt: 4 }} />
           </Container>
         </Box>
       </Box>
     </ThemeProvider>
   );
-}
-
-const Dashboard = ({ players }: { players: Player[] }) => {
-  return <DashboardContent players={players} />;
 }
 
 export default Dashboard;
