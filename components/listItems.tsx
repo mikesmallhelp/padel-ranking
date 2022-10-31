@@ -14,7 +14,7 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="Padel-pelit" />
     </ListItemButton>
-    <ListItemButton>
+    <ListItemButton href="/add-result">
       <ListItemIcon>
         <ShoppingCartIcon />
       </ListItemIcon>
