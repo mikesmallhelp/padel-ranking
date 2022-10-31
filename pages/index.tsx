@@ -4,7 +4,13 @@ import Dashboard from "../components/Dashboard";
 import Player from '../types/Player';
 
 export const getStaticProps: GetStaticProps = async () => {
-  const players = await prisma.player.findMany();
+  const players = await prisma.player.findMany({
+    orderBy: [
+      {
+        points: 'desc',
+      },
+    ]
+  });
   console.log('Mika: players: ' + JSON.stringify(players));
 
   return {
