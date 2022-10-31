@@ -4,11 +4,18 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import Title from '../components/Title';
+import Paper from '@mui/material/Paper';
 import Player from '../types/Player';
 import { GetStaticProps } from "next"
 import prisma from '../lib/prisma';
 import Dashboard from "../components/Dashboard";
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Grid from '@mui/material/Grid';
+import Title from '../components/Title';
 
 export const getStaticProps: GetStaticProps = async () => {
     const players = await prisma.player.findMany({
@@ -25,25 +32,46 @@ export const getStaticProps: GetStaticProps = async () => {
     };
 };
 
+const TeamResult = ({ players, title }: { players: Player[], title: string }) => {
+    return (
+        <Grid container spacing={1}>
+            <Grid xs={12}><Title>{title}</Title></Grid>
+            <Grid xs={3}><PlayerSelect players={players} title="Pelaaja 1" /></Grid>
+            <Grid xs={3}><PlayerSelect players={players} title="Pelaaja 2" /></Grid>
+        </Grid>
+    )
+}
+
+const PlayerSelect = ({ players, title }: { players: Player[], title: string }) => {
+    return (
+        <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label">{title}</InputLabel>
+            <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                label="Age"
+            >
+                {players.map(player => {
+                    return (
+                        <MenuItem key={player.id} value={player.id}>
+                            {player.name}
+                        </MenuItem>
+                    )
+                })}
+            </Select>
+        </FormControl>
+    )
+}
+
 const AddResult = ({ players }: { players: Player[] }) => {
     return (
         <React.Fragment>
-            <Table size="small">
-                <TableHead>
-                    <TableRow>
-                        <TableCell>Nimi</TableCell>
-                        <TableCell>Pisteet</TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {players.map((player) => (
-                        <TableRow key={player.id}>
-                            <TableCell>{player.name}</TableCell>
-                            <TableCell>{player.points}</TableCell>
-                        </TableRow>
-                    ))}
-                </TableBody>
-            </Table>
+            <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
+                <TeamResult players={players} title="Joukkue 1" />
+            </Paper>
+            <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
+                <TeamResult players={players} title="Joukkue 2" />
+            </Paper>
         </React.Fragment>
     )
 }
