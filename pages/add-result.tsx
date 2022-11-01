@@ -16,6 +16,7 @@ import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import Grid from '@mui/material/Grid';
 import Title from '../components/Title';
+import Button from '@mui/material/Button';
 
 export const getStaticProps: GetStaticProps = async () => {
     const players = await prisma.player.findMany({
@@ -34,10 +35,11 @@ export const getStaticProps: GetStaticProps = async () => {
 
 const TeamResult = ({ players, title }: { players: Player[], title: string }) => {
     return (
-        <Grid container spacing={1}>
+        <Grid container spacing={2} p={2}>
             <Grid item xs={12}><Title>{title}</Title></Grid>
-            <Grid item xs={3}><PlayerSelect players={players} title="Pelaaja 1" /></Grid>
-            <Grid item xs={3}><PlayerSelect players={players} title="Pelaaja 2" /></Grid>
+            <Grid item xs={4}><PlayerSelect players={players} title="Pelaaja 1" /></Grid>
+            <Grid item xs={4}><PlayerSelect players={players} title="Pelaaja 2" /></Grid>
+            <Grid item xs={4}><PointsSelect title="Pisteet" /></Grid>
         </Grid>
     )
 }
@@ -63,16 +65,46 @@ const PlayerSelect = ({ players, title }: { players: Player[], title: string }) 
     )
 }
 
+const PointsSelect = ({ title }: { title: string }) => {
+    const pointsValues = [0, 1, 2, 3, 4, 5, 6];
+
+    return (
+        <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label">{title}</InputLabel>
+            <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                label="Age"
+            >
+                {pointsValues.map(pointsValue => {
+                    return (
+                        <MenuItem key={pointsValue} value={pointsValue}>
+                            {pointsValue}
+                        </MenuItem>
+                    )
+                })}
+            </Select>
+        </FormControl>
+    )
+}
+
 const AddResult = ({ players }: { players: Player[] }) => {
     return (
-        <React.Fragment>
-            <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                <TeamResult players={players} title="Joukkue 1" />
-            </Paper>
-            <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                <TeamResult players={players} title="Joukkue 2" />
-            </Paper>
-        </React.Fragment>
+        <Grid container rowSpacing={2}>
+            <Grid item xs={12}>
+                <Paper>
+                    <TeamResult players={players} title="Joukkue 1" />
+                </Paper>
+            </Grid>
+            <Grid xs={12}>
+                <Paper>
+                    <TeamResult players={players} title="Joukkue 2" />
+                </Paper>
+            </Grid>
+            <Grid item xs={12} container justifyContent="flex-end">
+                <Button variant="contained">Lisää</Button>
+            </Grid>
+        </Grid>
     )
 }
 
