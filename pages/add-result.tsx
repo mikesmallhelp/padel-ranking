@@ -35,9 +35,9 @@ export const getStaticProps: GetStaticProps = async () => {
 const TeamResult = ({ players, title }: { players: Player[], title: string }) => {
     return (
         <Grid container spacing={1}>
-            <Grid xs={12}><Title>{title}</Title></Grid>
-            <Grid xs={3}><PlayerSelect players={players} title="Pelaaja 1" /></Grid>
-            <Grid xs={3}><PlayerSelect players={players} title="Pelaaja 2" /></Grid>
+            <Grid item xs={12}><Title>{title}</Title></Grid>
+            <Grid item xs={3}><PlayerSelect players={players} title="Pelaaja 1" /></Grid>
+            <Grid item xs={3}><PlayerSelect players={players} title="Pelaaja 2" /></Grid>
         </Grid>
     )
 }
