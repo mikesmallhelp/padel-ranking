@@ -94,28 +94,45 @@ const PointsSelect = ({ title, handleChange }: { title: string, handleChange: an
 }
 
 const AddResult = ({ players }: { players: Player[] }) => {
+    const [team1Player1Id, setTeam1Player1Id] = React.useState("");
+    const [team1Player2Id, setTeam1Player2Id] = React.useState("");
+    const [team1Points, setTeam1Points] = React.useState(0);
+    const [team2Player1Id, setTeam2Player1Id] = React.useState("");
+    const [team2Player2Id, setTeam2Player2Id] = React.useState("");
+    const [team2Points, setTeam2Points] = React.useState(0);
+
     const team1Player1Change = (event: SelectChangeEvent) => {
         console.log("team1Player1Change:" + event?.target.value);
+        setTeam1Player1Id(event.target.value);
     }
 
     const team1Player2Change = (event: SelectChangeEvent) => {
         console.log("team1Player2Change:" + event?.target.value);
+        setTeam1Player2Id(event.target.value);
     }
 
     const team1PointsChange = (event: SelectChangeEvent) => {
         console.log("team1PointsChange:" + event?.target.value);
+        setTeam1Points(Number(event.target.value));
     }
 
     const team2Player1Change = (event: SelectChangeEvent) => {
         console.log("team2Player1Change:" + event?.target.value);
+        setTeam2Player1Id(event.target.value);
     }
 
     const team2Player2Change = (event: SelectChangeEvent) => {
         console.log("team2Player2Change:" + event?.target.value);
+        setTeam2Player2Id(event.target.value);
     }
 
     const team2PointsChange = (event: SelectChangeEvent) => {
         console.log("team1PointsChange:" + event?.target.value);
+        setTeam2Points(Number(event.target.value));
+    }
+
+    const handleButtonClick = () => {
+        console.log("handleButtonClick, team1Player1Id:" + team1Player1Id);
     }
 
     return (
@@ -133,7 +150,7 @@ const AddResult = ({ players }: { players: Player[] }) => {
                 </Paper>
             </Grid>
             <Grid item xs={12} container justifyContent="flex-end">
-                <Button variant="contained">Lisää</Button>
+                <Button variant="contained" onClick={handleButtonClick}>Lisää</Button>
             </Grid>
         </Grid>
     )
