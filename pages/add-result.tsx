@@ -33,14 +33,14 @@ export const getStaticProps: GetStaticProps = async () => {
     };
 };
 
-const TeamResult = ({ players, title, player1HandleChange, player2HandleChange }:
-    { players: Player[], title: string, player1HandleChange: any, player2HandleChange: any }) => {
+const TeamResult = ({ players, title, player1HandleChange, player2HandleChange, pointsHandleChange }:
+    { players: Player[], title: string, player1HandleChange: any, player2HandleChange: any, pointsHandleChange: any }) => {
     return (
         <Grid container spacing={2} pl={2} pr={2} pb={2}>
             <Grid item xs={12}><Title>{title}</Title></Grid>
             <Grid item xs={12} md={4}><PlayerSelect players={players} title="Pelaaja 1" handleChange={player1HandleChange} /></Grid>
             <Grid item xs={12} md={4}><PlayerSelect players={players} title="Pelaaja 2" handleChange={player2HandleChange} /></Grid>
-            <Grid item xs={12} md={4}><PointsSelect title="Pisteet" /></Grid>
+            <Grid item xs={12} md={4}><PointsSelect title="Pisteet" handleChange={pointsHandleChange} /></Grid>
         </Grid>
     )
 }
@@ -68,7 +68,7 @@ const PlayerSelect = ({ players, title, handleChange }: { players: Player[], tit
     )
 }
 
-const PointsSelect = ({ title }: { title: string }) => {
+const PointsSelect = ({ title, handleChange }: { title: string, handleChange: any }) => {
     const pointsValues = [0, 1, 2, 3, 4, 5, 6];
 
     return (
@@ -79,6 +79,7 @@ const PointsSelect = ({ title }: { title: string }) => {
                 id="demo-simple-select"
                 label="Age"
                 defaultValue=""
+                onChange={handleChange}
             >
                 {pointsValues.map(pointsValue => {
                     return (
@@ -101,6 +102,10 @@ const AddResult = ({ players }: { players: Player[] }) => {
         console.log("team1Player2Change:" + event?.target.value);
     }
 
+    const team1PointsChange = (event: SelectChangeEvent) => {
+        console.log("team1PointsChange:" + event?.target.value);
+    }
+
     const team2Player1Change = (event: SelectChangeEvent) => {
         console.log("team2Player1Change:" + event?.target.value);
     }
@@ -109,16 +114,22 @@ const AddResult = ({ players }: { players: Player[] }) => {
         console.log("team2Player2Change:" + event?.target.value);
     }
 
+    const team2PointsChange = (event: SelectChangeEvent) => {
+        console.log("team1PointsChange:" + event?.target.value);
+    }
+
     return (
         <Grid container rowSpacing={2}>
             <Grid item xs={12} pb={2}>
                 <Paper>
-                    <TeamResult players={players} title="Joukkue 1" player1HandleChange={team1Player1Change} player2HandleChange={team1Player2Change} />
+                    <TeamResult players={players} title="Joukkue 1" player1HandleChange={team1Player1Change} player2HandleChange={team1Player2Change}
+                                pointsHandleChange={team1PointsChange} />
                 </Paper>
             </Grid>
             <Grid item xs={12}>
                 <Paper>
-                    <TeamResult players={players} title="Joukkue 2" player1HandleChange={team2Player1Change} player2HandleChange={team2Player2Change} />
+                    <TeamResult players={players} title="Joukkue 2" player1HandleChange={team2Player1Change} player2HandleChange={team2Player2Change} 
+                                pointsHandleChange={team2PointsChange} />
                 </Paper>
             </Grid>
             <Grid item xs={12} container justifyContent="flex-end">
