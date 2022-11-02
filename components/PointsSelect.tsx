@@ -10,9 +10,6 @@ const PointsSelect = ({ title, handleChange }: { title: string, handleChange: an
         <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">{title}</InputLabel>
             <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                label="Age"
                 defaultValue=""
                 onChange={handleChange}
             >

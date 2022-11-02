@@ -9,9 +9,6 @@ const PlayerSelect = ({ players, title, handleChange }: { players: Player[], tit
         <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">{title}</InputLabel>
             <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                label="Age"
                 defaultValue=""
                 onChange={handleChange}
             >
