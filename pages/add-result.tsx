@@ -17,6 +17,8 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import Grid from '@mui/material/Grid';
 import Title from '../components/Title';
 import Button from '@mui/material/Button';
+import Router from 'next/router';
+import GameResult from '../types/GameResult';
 
 export const getStaticProps: GetStaticProps = async () => {
     const players = await prisma.player.findMany({
@@ -131,8 +133,31 @@ const AddResult = ({ players }: { players: Player[] }) => {
         setTeam2Points(Number(event.target.value));
     }
 
-    const handleButtonClick = () => {
-        console.log("handleButtonClick, team1Player1Id:" + team1Player1Id);
+    const handleButtonClick = async (e: React.SyntheticEvent) => {
+        e.preventDefault();
+        
+        try {
+            const body: GameResult = {
+                team1Result: {
+                    player1Id: team1Player1Id,
+                    player2Id: team1Player2Id,
+                    points: team1Points
+                },
+                team2Result: {
+                    player1Id: team2Player1Id,
+                    player2Id: team2Player2Id,
+                    points: team2Points
+                }
+            };
+
+            await fetch('/api/add-result', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(body),
+            });
+          } catch (error) {
+            console.error(error);
+          }
     }
 
     return (
