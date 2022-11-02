@@ -10,7 +10,7 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
     await addPlayerResult(gameResult.team2Result.player1Id, gameResult.team2Result.points);
     await addPlayerResult(gameResult.team2Result.player2Id, gameResult.team2Result.points);
 
-    res.status(200);
+    res.status(200).json({});
 }
 
 async function addPlayerResult(playerId: string, newPoints: number) {

@@ -6,6 +6,7 @@ import Button from '@mui/material/Button';
 import GameResult from '../types/GameResult';
 import { SelectChangeEvent } from '@mui/material/Select';
 import TeamResult from '../components/TeamResult';
+import Router from 'next/router';
 
 const AddResult = ({ players }: { players: Player[] }) => {
     const [team1Player1Id, setTeam1Player1Id] = React.useState("");
@@ -61,6 +62,7 @@ const AddResult = ({ players }: { players: Player[] }) => {
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify(body),
             });
+            await Router.push('/');
           } catch (error) {
             console.error(error);
           }
