@@ -73,6 +73,6 @@ Start the application:
 npm run dev
 ```
 
-Open your browser in the localhost:3000.
+Open your browser in the url localhost:3000.
 
 
