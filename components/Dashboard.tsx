@@ -80,7 +80,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
 const mdTheme = createTheme();
 
-const Dashboard = ({ children, title }: { children: any, title: string }) => {
+const Dashboard = ({ children, title }: { children: JSX.Element, title: string }) => {
   const [open, setOpen] = React.useState(true);
   const toggleDrawer = () => {
     setOpen(!open);
