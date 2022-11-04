@@ -12,7 +12,7 @@ export const menuItems = (
       <ListItemIcon>
         <DashboardIcon />
       </ListItemIcon>
-      <ListItemText primary="Pelit" />
+      <ListItemText primary="Padel-pelit" />
     </ListItemButton>
     <ListItemButton href="/add-result">
       <ListItemIcon>
