@@ -20,7 +20,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
 const PadelGamesContainer = ({ players }: { players: Player[] }) => {
   return (
-    <Dashboard title="Padel-pelit">
+    <Dashboard title="Pelit">
       <PadelGames players={players} />
     </Dashboard>
   )
