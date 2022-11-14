@@ -1,10 +1,10 @@
 import Player from '../types/Player';
-import { GetStaticProps } from "next"
+import { GetServerSideProps } from "next"
 import prisma from '../lib/prisma';
 import Dashboard from "../components/Dashboard";
 import AddResult from '../components/AddResult'
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
     const players = await prisma.player.findMany({
         orderBy: [
             {
@@ -12,7 +12,6 @@ export const getStaticProps: GetStaticProps = async () => {
             },
         ]
     });
-    console.log('Mika: players: ' + JSON.stringify(players));
 
     return {
         props: { players }
