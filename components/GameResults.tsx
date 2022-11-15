@@ -10,13 +10,13 @@ import GameResult from '../types/GameResult';
 const GameResults = ({ gameResults }: { gameResults: GameResult[] }) => {
   return (
     <React.Fragment>
-      <Title>Results</Title>
+      <Title>Tulokset</Title>
       <Table size="small">
         <TableHead>
           <TableRow>
-            <TableCell>Team 1</TableCell>
-            <TableCell>Team 2</TableCell>
-            <TableCell>Result</TableCell>
+            <TableCell>Joukkue 1</TableCell>
+            <TableCell>Joukkue 2</TableCell>
+            <TableCell>Tulos</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
