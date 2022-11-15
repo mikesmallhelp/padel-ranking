@@ -24,7 +24,7 @@ const GameResults = ({ gameResults }: { gameResults: GameResult[] }) => {
         <TableBody>
           {gameResults.map((gameResult) => (
             <TableRow key={gameResult.id}>
-              <TableCell>{format(gameResult.createdAt, 'dd.MM.yyyy HH:mm')}</TableCell>
+              <TableCell>{gameResult.createdAt ? format(gameResult.createdAt, 'dd.MM.yyyy HH:mm') : ''}</TableCell>
               <TableCell>{gameResult.team1Result.player1?.name} &amp; {gameResult.team1Result.player2?.name}</TableCell>
               <TableCell>{gameResult.team2Result.player1?.name} &amp; {gameResult.team2Result.player2?.name}</TableCell>
               <TableCell>{gameResult.team1Result.points} - {gameResult.team2Result.points}</TableCell>
