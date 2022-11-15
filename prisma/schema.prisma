@@ -36,4 +36,5 @@ model GameResult {
   team2Result   TeamResult   @relation("teamResult2", fields: [teamResult2Id], references: [id])
   teamResult1Id String
   teamResult2Id String
+  createdAt     DateTime     @default(now())
 }

@@ -17,6 +17,8 @@
     "@mui/icons-material": "latest",
     "@mui/material": "latest",
     "@prisma/client": "^4.5.0",
+    "babel-plugin-superjson-next": "^0.4.4",
+    "date-fns": "^2.29.3",
     "next": "latest",
     "react": "latest",
     "react-dom": "latest",
