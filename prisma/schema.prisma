@@ -11,8 +11,29 @@ datasource db {
 }
 
 model Player {
+  id                  String           @default(cuid()) @id
+  name                String
+  games               Int
+  points              Int
+  player1TeamResults  TeamResult[]     @relation("player1")
+  player2TeamResults  TeamResult[]     @relation("player2")
+}
+
+model TeamResult {
+  id               String       @default(cuid()) @id
+  player1          Player       @relation("player1", fields: [player1Id], references: [id])
+  player2          Player       @relation("player2", fields: [player2Id], references: [id])
+  player1Id        String
+  player2Id        String
+  points           Int
+  team1GameResults GameResult[] @relation("teamResult1")
+  team2GameResults GameResult[] @relation("teamResult2")
+}
+
+model GameResult {
   id            String       @default(cuid()) @id
-  name          String
-  games         Int
-  points        Int
+  team1Result   TeamResult   @relation("teamResult1", fields: [teamResult1Id], references: [id])
+  team2Result   TeamResult   @relation("teamResult2", fields: [teamResult2Id], references: [id])
+  teamResult1Id String
+  teamResult2Id String
 }

@@ -20,7 +20,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
 const PadelGamesContainer = ({ players }: { players: Player[] }) => {
   return (
-    <Dashboard title="Padel-pelit">
+    <Dashboard title="Padel-pelit 15.11.2022 16:18">
       <PadelGames players={players} />
     </Dashboard>
   )
