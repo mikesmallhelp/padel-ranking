@@ -1,8 +1,10 @@
-import { GameResultSave } from './GameResultSave';
+import TeamResult from './TeamResult';
 
-type GameResult = GameResultSave & {
-    id?: string;
-    createdAt?: Date;
+type GameResult = {
+    id: string;
+    team1Result: TeamResult;
+    team2Result: TeamResult;
+    createdAt: Date;
 }
 
 export default GameResult;
