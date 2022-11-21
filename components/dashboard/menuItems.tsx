@@ -14,7 +14,7 @@ export const menuItems = (
       </ListItemIcon>
       <ListItemText primary="Padel-pelit" />
     </ListItemButton>
-    <ListItemButton href="/add-result">
+    <ListItemButton href="/add-result-container">
       <ListItemIcon>
         <ShoppingCartIcon />
       </ListItemIcon>

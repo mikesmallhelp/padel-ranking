@@ -3,9 +3,14 @@ import Grid from '@mui/material/Grid';
 import Title from '../dashboard/Title';
 import PlayerSelect from './PlayerSelect';
 import PointsSelect from './PointsSelect';
+import { SelectChangeEvent } from "@mui/material";
+import { ReactNode } from "react";
 
 const TeamResult = ({ players, title, player1HandleChange, player2HandleChange, pointsHandleChange }:
-    { players: Player[], title: string, player1HandleChange: any, player2HandleChange: any, pointsHandleChange: any }) => {
+    { players: Player[], title: string, 
+        player1HandleChange: (event: SelectChangeEvent<string>, child: ReactNode) => void, 
+        player2HandleChange: (event: SelectChangeEvent<string>, child: ReactNode) => void, 
+        pointsHandleChange: (event: SelectChangeEvent<string>, child: ReactNode) => void }) => {
     return (
         <Grid container spacing={2} pl={2} pr={2} pb={2}>
             <Grid item xs={12}><Title>{title}</Title></Grid>
