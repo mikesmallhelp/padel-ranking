@@ -3,7 +3,7 @@ import Paper from '@mui/material/Paper';
 import Player from '../../types/Player';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
-import GameResult from '../../types/GameResult';
+import GameResultSave from '../../types/GameResultSave';
 import { SelectChangeEvent } from '@mui/material/Select';
 import TeamResult from './TeamResult';
 import Router from 'next/router';
@@ -44,7 +44,7 @@ const AddResult = ({ players }: { players: Player[] }) => {
         e.preventDefault();
 
         try {
-            const body: GameResult = {
+            const body: GameResultSave = {
                 team1Result: {
                     player1Id: team1Player1Id,
                     player2Id: team1Player2Id,

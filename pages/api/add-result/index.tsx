@@ -1,9 +1,9 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import GameResult from '../../../types/GameResult';
+import GameResultSave from '../../../types/GameResultSave';
 import prisma from '../../../lib/prisma';
 
 export default async function handle(req: NextApiRequest, res: NextApiResponse) {
-    const gameResult: GameResult = req.body;
+    const gameResult: GameResultSave = req.body;
     
     await addPlayerResult(gameResult.team1Result.player1Id, gameResult.team1Result.points);
     await addPlayerResult(gameResult.team1Result.player2Id, gameResult.team1Result.points);
@@ -28,7 +28,7 @@ async function addPlayerResult(playerId: string, newPoints: number) {
     })
 }
 
-async function addGameResult(gameResult: GameResult) {
+async function addGameResult(gameResult: GameResultSave) {
     await prisma.gameResult.create({
         data: {
             team1Result: {

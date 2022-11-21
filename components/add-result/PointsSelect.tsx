@@ -2,8 +2,8 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import { SelectChangeEvent } from "@mui/material";
-import { ReactNode } from "react";
+import { SelectChangeEvent } from '@mui/material';
+import { ReactNode } from 'react';
 
 const PointsSelect = ({ title, handleChange }: { title: string, handleChange: (event: SelectChangeEvent<string>, child: ReactNode) => void }) => {
     const pointsValues = [0, 1, 2, 3, 4, 5, 6];

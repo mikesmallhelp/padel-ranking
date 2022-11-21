@@ -2,7 +2,7 @@ import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Players from './Players';
 import Player from '../../types/Player';
-import GameResult from "../../types/GameResult";
+import GameResult from '../../types/GameResult';
 import GameResults from './GameResults';
 
 const PadelGames = ({ players, gameResults }: { players: Player[], gameResults: GameResult[] }) => {

@@ -1,9 +1,9 @@
-import Player from "./Player";
+import Player from './Player';
+import TeamResultSave from './TeamResultSave';
 
-export type TeamResult = {
-    player1Id: string;
-    player2Id: string;
-    player1?:   Player;
-    player2?:   Player;
-    points: number;
+type TeamResult = TeamResultSave & {
+    player1:   Player;
+    player2:   Player;
 }
+
+export default TeamResult;

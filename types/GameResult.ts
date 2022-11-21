@@ -1,9 +1,7 @@
-import { TeamResult } from './TeamResult';
+import { GameResultSave } from './GameResultSave';
 
-type GameResult = {
+type GameResult = GameResultSave & {
     id?: string;
-    team1Result: TeamResult;
-    team2Result: TeamResult;
     createdAt?: Date;
 }
 
