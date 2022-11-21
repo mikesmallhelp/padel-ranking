@@ -7,7 +7,7 @@ import TableRow from '@mui/material/TableRow';
 import Title from '../dashboard/Title';
 import Player from '../../types/Player';
 
-const Players = ({ players }: { players: Player[] }) => {
+const Ranking = ({ players }: { players: Player[] }) => {
   return (
     <React.Fragment>
       <Title>Ranking</Title>
@@ -31,4 +31,4 @@ const Players = ({ players }: { players: Player[] }) => {
   )
 }
 
-export default Players;
+export default Ranking;

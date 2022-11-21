@@ -1,6 +1,6 @@
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
-import Players from './Players';
+import Ranking from './Ranking';
 import Player from '../../types/Player';
 import GameResult from '../../types/GameResult';
 import GameResults from './GameResults';
@@ -10,7 +10,7 @@ const PadelGames = ({ players, gameResults }: { players: Player[], gameResults: 
         <Grid container spacing={3}>
             <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                    <Players players={players} />
+                    <Ranking players={players} />
                 </Paper>
             </Grid>
             <Grid item xs={12}>
