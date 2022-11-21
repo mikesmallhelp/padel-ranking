@@ -9,12 +9,12 @@ const PadelGames = ({ players, gameResults }: { players: Player[], gameResults: 
     return (
         <Grid container spacing={3}>
             <Grid item xs={12}>
-                <Paper sx={{ p: 2}}>
+                <Paper sx={{ p: 2 }}>
                     <Ranking players={players} />
                 </Paper>
             </Grid>
             <Grid item xs={12}>
-                <Paper sx={{ p: 2}}>
+                <Paper sx={{ p: 2 }}>
                     <GameResults gameResults={gameResults} />
                 </Paper>
             </Grid>
