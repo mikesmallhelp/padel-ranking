@@ -1,6 +1,6 @@
-import Player from '../types/Player';
+import Player from '../../types/Player';
 import Grid from '@mui/material/Grid';
-import Title from '../components/Title';
+import Title from '../dashboard/Title';
 import PlayerSelect from './PlayerSelect';
 import PointsSelect from './PointsSelect';
 

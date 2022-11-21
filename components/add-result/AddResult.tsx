@@ -1,11 +1,11 @@
 import * as React from 'react';
 import Paper from '@mui/material/Paper';
-import Player from '../types/Player';
+import Player from '../../types/Player';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
-import GameResult from '../types/GameResult';
+import GameResult from '../../types/GameResult';
 import { SelectChangeEvent } from '@mui/material/Select';
-import TeamResult from '../components/TeamResult';
+import TeamResult from './TeamResult';
 import Router from 'next/router';
 
 const AddResult = ({ players }: { players: Player[] }) => {

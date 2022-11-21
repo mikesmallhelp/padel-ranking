@@ -4,8 +4,8 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import Title from './Title';
-import GameResult from '../types/GameResult';
+import Title from '../dashboard/Title';
+import GameResult from '../../types/GameResult';
 import { format } from 'date-fns';
 
 const GameResults = ({ gameResults }: { gameResults: GameResult[] }) => {

@@ -1,9 +1,9 @@
 import { GetServerSideProps } from "next"
 import prisma from '../lib/prisma';
-import Dashboard from "../components/Dashboard";
+import Dashboard from "../components/dashboard/Dashboard";
 import Player from '../types/Player';
 import GameResult from "../types/GameResult";
-import PadelGames from '../components/PadelGames';
+import PadelGames from '../components/padel-games/PadelGames';
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const players = await prisma.player.findMany({
