@@ -6,7 +6,8 @@ import GameResult from "../types/GameResult"
 
 describe('Home', () => {
   it('renders a PadelGamesContainer', () => {
-    render(<PadelGamesContainer players={players} gameResults={gameResults} />)
+    render(<PadelGamesContainer players={players} gameResults={gameResults} />);
+    expect(screen.getAllByText('Ranking')).toBeTruthy();
   })
 })
 
