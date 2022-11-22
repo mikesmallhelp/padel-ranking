@@ -1,14 +1,14 @@
-import Player from '../types/Player';
+import Player from "../types/Player";
 import { GetServerSideProps } from "next"
-import prisma from '../lib/prisma';
-import Dashboard from '../components/dashboard/Dashboard';
-import Players from '../components/players/Players';
+import prisma from "../lib/prisma";
+import Dashboard from "../components/dashboard/Dashboard";
+import Players from "../components/players/Players";
 
 export const getServerSideProps: GetServerSideProps = async () => {
     const players = await prisma.player.findMany({
         orderBy: [
             {
-                name: 'asc'
+                name: "asc"
             },
         ]
     });

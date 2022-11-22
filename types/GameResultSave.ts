@@ -1,4 +1,4 @@
-import TeamResultSave from './TeamResultSave';
+import TeamResultSave from "./TeamResultSave";
 
 type GameResultSave = {
     team1Result: TeamResultSave;

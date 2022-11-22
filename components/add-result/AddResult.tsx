@@ -1,12 +1,12 @@
-import * as React from 'react';
-import Paper from '@mui/material/Paper';
-import Player from '../../types/Player';
-import Grid from '@mui/material/Grid';
-import Button from '@mui/material/Button';
-import GameResultSave from '../../types/GameResultSave';
-import { SelectChangeEvent } from '@mui/material/Select';
-import TeamResult from './TeamResult';
-import Router from 'next/router';
+import * as React from "react";
+import Paper from "@mui/material/Paper";
+import Player from "../../types/Player";
+import Grid from "@mui/material/Grid";
+import Button from "@mui/material/Button";
+import GameResultSave from "../../types/GameResultSave";
+import { SelectChangeEvent } from "@mui/material/Select";
+import TeamResult from "./TeamResult";
+import Router from "next/router";
 
 const AddResult = ({ players }: { players: Player[] }) => {
     const [team1Player1Id, setTeam1Player1Id] = React.useState("");
@@ -57,12 +57,12 @@ const AddResult = ({ players }: { players: Player[] }) => {
                 }
             };
 
-            await fetch('/api/add-result', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+            await fetch("/api/add-result", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(body),
             });
-            await Router.push('/');
+            await Router.push("/");
         } catch (error) {
             console.error(error);
         }

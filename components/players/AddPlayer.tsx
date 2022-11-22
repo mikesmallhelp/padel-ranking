@@ -1,10 +1,10 @@
-import * as React from 'react';
-import Title from '../dashboard/Title';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import Grid from '@mui/material/Grid';
-import PlayerSave from '../../types/PlayerSave';
-import Router from 'next/router';
+import * as React from "react";
+import Title from "../dashboard/Title";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import Grid from "@mui/material/Grid";
+import PlayerSave from "../../types/PlayerSave";
+import Router from "next/router";
 
 const AddPlayer = ({ }: {}) => {
     const [playerName, setPlayerName] = React.useState("");
@@ -17,13 +17,13 @@ const AddPlayer = ({ }: {}) => {
                 name: playerName
             }
 
-            await fetch('/api/add-player', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+            await fetch("/api/add-player", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(body),
             });
             setPlayerName("");
-            await Router.push('/players-container');
+            await Router.push("/players-container");
         } catch (error) {
             console.error(error);
         }

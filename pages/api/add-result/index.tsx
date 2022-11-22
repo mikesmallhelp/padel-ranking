@@ -1,6 +1,6 @@
-import { NextApiRequest, NextApiResponse } from 'next';
-import GameResultSave from '../../../types/GameResultSave';
-import prisma from '../../../lib/prisma';
+import { NextApiRequest, NextApiResponse } from "next";
+import GameResultSave from "../../../types/GameResultSave";
+import prisma from "../../../lib/prisma";
 
 export default async function handle(req: NextApiRequest, res: NextApiResponse) {
     const gameResult: GameResultSave = req.body;

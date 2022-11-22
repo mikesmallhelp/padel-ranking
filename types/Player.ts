@@ -1,4 +1,4 @@
-import PlayerSave from './PlayerSave';
+import PlayerSave from "./PlayerSave";
 
 type Player = PlayerSave & {
     id: string;

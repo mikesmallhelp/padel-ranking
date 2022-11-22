@@ -1,6 +1,6 @@
-import { NextApiRequest, NextApiResponse } from 'next';
-import PlayerSave from '../../../types/PlayerSave';
-import prisma from '../../../lib/prisma';
+import { NextApiRequest, NextApiResponse } from "next";
+import PlayerSave from "../../../types/PlayerSave";
+import prisma from "../../../lib/prisma";
 
 export default async function handle(req: NextApiRequest, res: NextApiResponse) {
     const playerSave: PlayerSave = req.body;

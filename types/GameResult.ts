@@ -1,4 +1,4 @@
-import TeamResult from './TeamResult';
+import TeamResult from "./TeamResult";
 
 type GameResult = {
     id: string;

@@ -1,10 +1,10 @@
-import Player from '../../types/Player';
-import Grid from '@mui/material/Grid';
-import Title from '../dashboard/Title';
-import PlayerSelect from './PlayerSelect';
-import PointsSelect from './PointsSelect';
-import { SelectChangeEvent } from '@mui/material';
-import { ReactNode } from 'react';
+import Player from "../../types/Player";
+import Grid from "@mui/material/Grid";
+import Title from "../dashboard/Title";
+import PlayerSelect from "./PlayerSelect";
+import PointsSelect from "./PointsSelect";
+import { SelectChangeEvent } from "@mui/material";
+import { ReactNode } from "react";
 
 const TeamResult = ({ players, title, player1HandleChange, player2HandleChange, pointsHandleChange }:
     { players: Player[], title: string, 
