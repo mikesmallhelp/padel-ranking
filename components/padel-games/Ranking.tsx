@@ -15,6 +15,7 @@ const Ranking = ({ players }: { players: Player[] }) => {
         <TableHead>
           <TableRow>
             <TableCell>Nimi</TableCell>
+            <TableCell>Pelit</TableCell>
             <TableCell>Pisteet</TableCell>
           </TableRow>
         </TableHead>
@@ -22,6 +23,7 @@ const Ranking = ({ players }: { players: Player[] }) => {
           {players.map((player) => (
             <TableRow key={player.id}>
               <TableCell>{player.name}</TableCell>
+              <TableCell>{player.games}</TableCell>
               <TableCell>{player.points}</TableCell>
             </TableRow>
           ))}
