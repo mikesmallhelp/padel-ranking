@@ -21,8 +21,11 @@ async function addPlayerResult(playerId: string, newPoints: number) {
             id: playerId,
         },
         data: {
+            games: {
+                increment: 1
+            },
             points: {
-                increment: newPoints,
+                increment: newPoints
             },
         },
     })

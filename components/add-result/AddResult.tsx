@@ -58,14 +58,14 @@ const AddResult = ({ players }: { players: Player[] }) => {
             };
 
             await fetch('/api/add-result', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(body),
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(body),
             });
             await Router.push('/');
-          } catch (error) {
+        } catch (error) {
             console.error(error);
-          }
+        }
     }
 
     return (
@@ -73,13 +73,13 @@ const AddResult = ({ players }: { players: Player[] }) => {
             <Grid item xs={12} pb={2}>
                 <Paper>
                     <TeamResult players={players} title="Joukkue 1" player1HandleChange={team1Player1Change} player2HandleChange={team1Player2Change}
-                                pointsHandleChange={team1PointsChange} />
+                        pointsHandleChange={team1PointsChange} />
                 </Paper>
             </Grid>
             <Grid item xs={12}>
                 <Paper>
-                    <TeamResult players={players} title="Joukkue 2" player1HandleChange={team2Player1Change} player2HandleChange={team2Player2Change} 
-                                pointsHandleChange={team2PointsChange} />
+                    <TeamResult players={players} title="Joukkue 2" player1HandleChange={team2Player1Change} player2HandleChange={team2Player2Change}
+                        pointsHandleChange={team2PointsChange} />
                 </Paper>
             </Grid>
             <Grid item xs={12} container justifyContent="flex-end">

@@ -1,6 +1,7 @@
-type Player = {
+import PlayerSave from './PlayerSave';
+
+type Player = PlayerSave & {
     id: string;
-    name: string;
     games: number;
     points: number;
 };
