@@ -20,7 +20,7 @@ export const menuItems = (
       </ListItemIcon>
       <ListItemText primary="Lisää tulos" />
     </ListItemButton>
-    <ListItemButton>
+    <ListItemButton href="/players-container">
       <ListItemIcon>
         <PeopleIcon />
       </ListItemIcon>
