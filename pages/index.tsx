@@ -28,7 +28,12 @@ export const getServerSideProps: GetServerSideProps = async () => {
           player2: true
         }
       },
-    }
+    },
+    orderBy: [
+      {
+        createdAt: 'desc'
+      }
+    ]
   });
 
   console.log('GameResults:' + JSON.stringify(gameResults));
