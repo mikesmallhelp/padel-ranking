@@ -36,6 +36,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     ]
   });
 
+  console.log("Players:" + JSON.stringify(players));
   console.log("GameResults:" + JSON.stringify(gameResults));
 
   return {
