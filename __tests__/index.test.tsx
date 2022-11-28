@@ -5,21 +5,15 @@ import Player from "../types/Player";
 import GameResult from "../types/GameResult";
 import { parseISO } from "date-fns";
 
-describe('Home', () => {
+describe('index.tsx', () => {
   it('check the game results', () => {
     render(<PadelGamesContainer players={players} gameResults={gameResults} />);
-    checkGameResult({gameNumber: 1, createdAt: "11.02.2022 11:30", team1: "Tommi & Ville", team2: "Jarkko & Joonas", result: "6 - 2"});
-    checkGameResult({gameNumber: 2, createdAt: "10.02.2022 12:32", team1: "Ville & Tommi", team2: "Joonas & Jarkko", result: "6 - 1"});
+    expect(screen.getByTestId("gameResultsTitle").textContent).toContain("Tulokset");
+    expect(screen.getByTestId("gameResultsColumnHeaders").textContent).toContain("AikaJoukkue 1Joukkue 2Tulos");
+    expect(screen.getByTestId("gameResult1").textContent).toContain("11.02.2022 11:30Tommi & VilleJarkko & Joonas6 - 2");
+    expect(screen.getByTestId("gameResult2").textContent).toContain("10.02.2022 12:32Ville & TommiJoonas & Jarkko6 - 1");
   })
 })
-
-const checkGameResult = ({gameNumber, createdAt, team1, team2, result}: {gameNumber: number, createdAt: string, team1: string, 
-                                team2: string, result: string}) => {
-  expect(screen.getByTestId("gameResult" + gameNumber + "createdAt").textContent).toContain(createdAt);
-  expect(screen.getByTestId("gameResult" + gameNumber + "team1").textContent).toContain(team1);
-  expect(screen.getByTestId("gameResult" + gameNumber + "team2").textContent).toContain(team2);
-  expect(screen.getByTestId("gameResult" + gameNumber + "result").textContent).toContain(result);
-}
 
 const players: Player[] = [
   { "id": "idTommi", "name": "Tommi", "games": 2, "points": 12 },
