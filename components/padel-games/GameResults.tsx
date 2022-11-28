@@ -11,20 +11,20 @@ import { format } from "date-fns";
 const GameResults = ({ gameResults }: { gameResults: GameResult[] }) => {
   return (
     <React.Fragment>
-      <Title>Tulokset</Title>
+      <Title data-testid="gameResultsTitle">Tulokset</Title>
       <Table size="small">
         <TableHead>
           <TableRow>
-            <TableCell>Aika</TableCell>
-            <TableCell>Joukkue 1</TableCell>
-            <TableCell>Joukkue 2</TableCell>
-            <TableCell>Tulos</TableCell>
+            <TableCell data-testid="tableHeadTime">Aika</TableCell>
+            <TableCell data-testid="tableHeadTeam1">Joukkue 1</TableCell>
+            <TableCell data-testid="tableHeadTeam2">Joukkue 2</TableCell>
+            <TableCell data-testid="tableHeadResult">Tulos</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {gameResults.map((gameResult) => (
             <TableRow key={gameResult.id} data-testid={gameResult.id}>
-              <TableCell>
+              <TableCell data-testid={gameResult.id + "createdAt"}>
                 {gameResult.createdAt ? format(gameResult.createdAt, "dd.MM.yyyy HH:mm") : ""}
               </TableCell>
               <TableCell data-testid={gameResult.id + "team1"}>
