@@ -23,11 +23,19 @@ const GameResults = ({ gameResults }: { gameResults: GameResult[] }) => {
         </TableHead>
         <TableBody>
           {gameResults.map((gameResult) => (
-            <TableRow key={gameResult.id}>
-              <TableCell>{gameResult.createdAt ? format(gameResult.createdAt, "dd.MM.yyyy HH:mm") : ""}</TableCell>
-              <TableCell>{gameResult.team1Result.player1?.name} &amp; {gameResult.team1Result.player2?.name}</TableCell>
-              <TableCell>{gameResult.team2Result.player1?.name} &amp; {gameResult.team2Result.player2?.name}</TableCell>
-              <TableCell>{gameResult.team1Result.points} - {gameResult.team2Result.points}</TableCell>
+            <TableRow key={gameResult.id} data-testid={gameResult.id}>
+              <TableCell>
+                {gameResult.createdAt ? format(gameResult.createdAt, "dd.MM.yyyy HH:mm") : ""}
+              </TableCell>
+              <TableCell data-testid={gameResult.id + "team1"}>
+                {gameResult.team1Result.player1?.name} &amp; {gameResult.team1Result.player2?.name}
+              </TableCell>
+              <TableCell data-testid={gameResult.id + "team2"}>
+                {gameResult.team2Result.player1?.name} &amp; {gameResult.team2Result.player2?.name}
+              </TableCell>
+              <TableCell data-testid={gameResult.id + "result"}>
+                {gameResult.team1Result.points} - {gameResult.team2Result.points}
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>

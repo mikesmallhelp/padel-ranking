@@ -5,47 +5,65 @@ import Player from "../types/Player"
 import GameResult from "../types/GameResult"
 
 describe('Home', () => {
-  it('renders a PadelGamesContainer', () => {
+  it('check the game results', () => {
     render(<PadelGamesContainer players={players} gameResults={gameResults} />);
-    expect(screen.getAllByText('Ranking')).toBeTruthy();
+    checkGameResult({gameNumber: 1, team1: "Tommi & Ville", team2: "Jarkko & Joonas", result: "6 - 2"});
+    checkGameResult({gameNumber: 2, team1: "Ville & Tommi", team2: "Joonas & Jarkko", result: "6 - 2"});
   })
 })
 
+const checkGameResult = ({gameNumber, team1, team2, result}: {gameNumber: number, team1: string, team2: string, result: string}) => {
+  expect(screen.getByTestId("gameResult" + gameNumber + "team1").textContent).toContain(team1);
+  expect(screen.getByTestId("gameResult" + gameNumber + "team2").textContent).toContain(team2);
+  expect(screen.getByTestId("gameResult" + gameNumber + "result").textContent).toContain(result);
+}
+
 const players: Player[] = [
-  { "id": "clasf1xr3000fi2mwfspait1l", "name": "Tommi", "games": 2, "points": 12 },
-  { "id": "clasf211z000hi2mwsv81w8qc", "name": "Ville", "games": 2, "points": 12 },
-  { "id": "clasf1oao000bi2mwu6re1too", "name": "Jarkko", "games": 2, "points": 3 },
-  { "id": "clasf1roo000di2mw5uwo1hxn", "name": "Joonas", "games": 2, "points": 3 }]
+  { "id": "idTommi", "name": "Tommi", "games": 2, "points": 12 },
+  { "id": "idVille", "name": "Ville", "games": 2, "points": 12 },
+  { "id": "idJarkko", "name": "Jarkko", "games": 2, "points": 3 },
+  { "id": "idJoonas", "name": "Joonas", "games": 2, "points": 3 },
+  { "id": "idMika", "name": "Mika", "games": 0, "points": 0 }
+]
 
 const gameResults: GameResult[] = [
   {
-    "id": "clasf367o000ni2mwjxo2w8ch",
-    "createdAt": new Date(), "team1Result":
+    "id": "gameResult1",
+    "createdAt": new Date(), 
+    "team1Result":
     {
-      "player1Id": "clasf1xr3000fi2mwfspait1l",
-      "player2Id": "clasf211z000hi2mwsv81w8qc", "points": 6, "player1":
-        { "id": "clasf1xr3000fi2mwfspait1l", "name": "Tommi", "games": 2, "points": 12 }, "player2":
-        { "id": "clasf211z000hi2mwsv81w8qc", "name": "Ville", "games": 2, "points": 12 }
-    }, "team2Result":
+      "player1Id": "idTommi",
+      "player2Id": "idVille", "points": 6, "player1":
+        { "id": "idTommi", "name": "Tommi", "games": 2, "points": 12 }, "player2":
+        { "id": "idVille", "name": "Ville", "games": 2, "points": 12 }
+    }, 
+    "team2Result":
     {
-      "player1Id": "clasf1oao000bi2mwu6re1too",
-      "player2Id": "clasf1roo000di2mw5uwo1hxn", "points": 2, "player1": {
-        "id": "clasf1oao000bi2mwu6re1too",
+      "player1Id": "idJarkko",
+      "player2Id": "IdJoonas", "points": 2, "player1": {
+        "id": "idJarkko",
         "name": "Jarkko", "games": 2, "points": 3
-      }, "player2": { "id": "clasf1roo000di2mw5uwo1hxn", "name": "Joonas", "games": 2, "points": 3 }
+      }, "player2": { "id": "idJoonas", "name": "Joonas", "games": 2, "points": 3 }
     }
   },
   {
-    "id": "clasf2mor000ji2mw75fte3t9",
-    "createdAt": new Date(), "team1Result": {
-      "player1Id": "clasf1xr3000fi2mwfspait1l",
-      "player2Id": "clasf211z000hi2mwsv81w8qc", "points": 6, "player1": { "id": "clasf1xr3000fi2mwfspait1l", "name": "Tommi", "games": 2, "points": 12 },
-      "player2": { "id": "clasf211z000hi2mwsv81w8qc", "name": "Ville", "games": 2, "points": 12 }
-    }, "team2Result":
+    "id": "gameResult2",
+    "createdAt": new Date(), 
+    "team1Result":
     {
-      "player1Id": "clasf1oao000bi2mwu6re1too", "player2Id": "clasf1roo000di2mw5uwo1hxn",
-      "points": 1, "player1": { "id": "clasf1oao000bi2mwu6re1too", "name": "Jarkko", "games": 2, "points": 3 }, "player2":
-        { "id": "clasf1roo000di2mw5uwo1hxn", "name": "Joonas", "games": 2, "points": 3 }
+      "player1Id": "idVille",
+      "player2Id": "idTommi", "points": 6, "player1":
+        { "id": "idVille", "name": "Ville", "games": 2, "points": 12 }, "player2":
+        { "id": "idTommi", "name": "Tommi", "games": 2, "points": 12 }
+    }, 
+    "team2Result":
+    {
+      "player1Id": "idJoonas",
+      "player2Id": "IdJarkko", "points": 1, "player1": {
+        "id": "idJoonas",
+        "name": "Joonas", "games": 2, "points": 3
+      }, "player2": { "id": "idJarkko", "name": "Jarkko", "games": 2, "points": 3 }
     }
-  }]
+  }
+]
 
