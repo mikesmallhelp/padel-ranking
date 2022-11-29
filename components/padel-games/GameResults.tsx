@@ -15,15 +15,15 @@ const GameResults = ({ gameResults }: { gameResults: GameResult[] }) => {
       <Table size="small">
         <TableHead>
           <TableRow>
-            <TableCell data-testid="tableHeadRowTime">Aika</TableCell>
-            <TableCell data-testid="tableHeadRowTeam1">Joukkue 1</TableCell>
-            <TableCell data-testid="tableHeadRowTeam2">Joukkue 2</TableCell>
-            <TableCell data-testid="tableHeadRowResult">Tulos</TableCell>
+            <TableCell data-testid="gameResultsColumnTitleTime">Aika</TableCell>
+            <TableCell data-testid="gameResultsColumnTitleTeam1">Joukkue 1</TableCell>
+            <TableCell data-testid="gameResultsColumnTitleTeam2">Joukkue 2</TableCell>
+            <TableCell data-testid="gameResultsColumnTitleResult">Tulos</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {gameResults.map((gameResult) => (
-            <TableRow key={gameResult.id} data-testid={gameResult.id}>
+            <TableRow key={gameResult.id}>
               <TableCell data-testid={gameResult.id + "createdAt"}>
                 {gameResult.createdAt ? format(gameResult.createdAt, "dd.MM.yyyy HH:mm") : ""}
               </TableCell>

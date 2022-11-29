@@ -14,17 +14,17 @@ const Ranking = ({ players }: { players: Player[] }) => {
       <Table size="small">
         <TableHead>
           <TableRow>
-            <TableCell>Nimi</TableCell>
-            <TableCell>Pelit</TableCell>
-            <TableCell>Pisteet</TableCell>
+            <TableCell data-testid="rankingColumnTitleName">Nimi</TableCell>
+            <TableCell data-testid="rankingColumnTitleGames">Pelit</TableCell>
+            <TableCell data-testid="rankingColumnTitlePoints">Pisteet</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {players.map((player) => (
             <TableRow key={player.id}>
-              <TableCell>{player.name}</TableCell>
-              <TableCell>{player.games}</TableCell>
-              <TableCell>{player.points}</TableCell>
+              <TableCell data-testid={player.id + "name"}>{player.name}</TableCell>
+              <TableCell data-testid={player.id + "games"}>{player.games}</TableCell>
+              <TableCell data-testid={player.id + "points"}>{player.points}</TableCell>
             </TableRow>
           ))}
         </TableBody>

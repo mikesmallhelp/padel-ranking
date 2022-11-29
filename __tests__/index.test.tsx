@@ -6,20 +6,29 @@ import GameResult from "../types/GameResult";
 import { parseISO } from "date-fns";
 
 describe('index.tsx', () => {
+  it('check the ranking', () => {
+    render(<PadelGamesContainer players={players} gameResults={gameResults} />);
+    checkPlayerRanking({playerName: "Tommi", games: "2", points: "12"});
+  })  
+
   it('check the game results', () => {
     render(<PadelGamesContainer players={players} gameResults={gameResults} />);
-    checkTitleAndTableHeadRow();
+    checkGameResultsColumnTitles();
     checkGameResult({gameNumber: 1, createdAt: "11.02.2022 11:30", team1: "Tommi & Ville", team2: "Jarkko & Joonas", result: "6 - 2"});
     checkGameResult({gameNumber: 2, createdAt: "10.02.2022 12:32", team1: "Ville & Tommi", team2: "Joonas & Jarkko", result: "6 - 1"});
   })
 })
 
-const checkTitleAndTableHeadRow = () => {
+const checkPlayerRanking = ({ playerName, games, points }: {playerName: string, games: string, points: string}) => {
+  expect(screen.getByTestId("id" + playerName + "name").textContent).toContain(playerName);
+}
+
+const checkGameResultsColumnTitles = () => {
   expect(screen.getByTestId("gameResultsTitle").textContent).toContain("Tulokset");
-  expect(screen.getByTestId("tableHeadRowTime").textContent).toContain("Aika");
-  expect(screen.getByTestId("tableHeadRowTeam1").textContent).toContain("Joukkue 1");
-  expect(screen.getByTestId("tableHeadRowTeam2").textContent).toContain("Joukkue 2");
-  expect(screen.getByTestId("tableHeadRowResult").textContent).toContain("Tulos");
+  expect(screen.getByTestId("gameResultsColumnTitleTime").textContent).toContain("Aika");
+  expect(screen.getByTestId("gameResultsColumnTitleTeam1").textContent).toContain("Joukkue 1");
+  expect(screen.getByTestId("gameResultsColumnTitleTeam2").textContent).toContain("Joukkue 2");
+  expect(screen.getByTestId("gameResultsColumnTitleResult").textContent).toContain("Tulos");
 }
 
 const checkGameResult = ({ gameNumber, createdAt, team1, team2, result }: {
