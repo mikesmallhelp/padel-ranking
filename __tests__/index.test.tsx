@@ -8,11 +8,19 @@ import { parseISO } from "date-fns";
 describe('index.tsx', () => {
   it('check the game results', () => {
     render(<PadelGamesContainer players={players} gameResults={gameResults} />);
-    expect(screen.getByTestId("gameResultsTitle").textContent).toContain("Tulokset");
+    checkTitleAndTableHeadRow();
     checkGameResult({gameNumber: 1, createdAt: "11.02.2022 11:30", team1: "Tommi & Ville", team2: "Jarkko & Joonas", result: "6 - 2"});
     checkGameResult({gameNumber: 2, createdAt: "10.02.2022 12:32", team1: "Ville & Tommi", team2: "Joonas & Jarkko", result: "6 - 1"});
   })
 })
+
+const checkTitleAndTableHeadRow = () => {
+  expect(screen.getByTestId("gameResultsTitle").textContent).toContain("Tulokset");
+  expect(screen.getByTestId("tableHeadRowTime").textContent).toContain("Aika");
+  expect(screen.getByTestId("tableHeadRowTeam1").textContent).toContain("Joukkue 1");
+  expect(screen.getByTestId("tableHeadRowTeam2").textContent).toContain("Joukkue 2");
+  expect(screen.getByTestId("tableHeadRowResult").textContent).toContain("Tulos");
+}
 
 const checkGameResult = ({ gameNumber, createdAt, team1, team2, result }: {
   gameNumber: number, createdAt: string, team1: string,

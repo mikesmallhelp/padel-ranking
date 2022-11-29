@@ -14,11 +14,11 @@ const GameResults = ({ gameResults }: { gameResults: GameResult[] }) => {
       <Title titleTestId="gameResultsTitle">Tulokset</Title>
       <Table size="small">
         <TableHead>
-          <TableRow data-testid="gameResultsColumnHeaders">
-            <TableCell data-testid="tableHeadTime">Aika</TableCell>
-            <TableCell data-testid="tableHeadTeam1">Joukkue 1</TableCell>
-            <TableCell data-testid="tableHeadTeam2">Joukkue 2</TableCell>
-            <TableCell data-testid="tableHeadResult">Tulos</TableCell>
+          <TableRow>
+            <TableCell data-testid="tableHeadRowTime">Aika</TableCell>
+            <TableCell data-testid="tableHeadRowTeam1">Joukkue 1</TableCell>
+            <TableCell data-testid="tableHeadRowTeam2">Joukkue 2</TableCell>
+            <TableCell data-testid="tableHeadRowResult">Tulos</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
