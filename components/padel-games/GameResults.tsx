@@ -24,16 +24,16 @@ const GameResults = ({ gameResults }: { gameResults: GameResult[] }) => {
         <TableBody>
           {gameResults.map((gameResult) => (
             <TableRow key={gameResult.id} data-testid={gameResult.id}>
-              <TableCell>
+              <TableCell data-testid={gameResult.id + "createdAt"}>
                 {gameResult.createdAt ? format(gameResult.createdAt, "dd.MM.yyyy HH:mm") : ""}
               </TableCell>
-              <TableCell>
+              <TableCell data-testid={gameResult.id + "team1"}>
                 {gameResult.team1Result.player1?.name} &amp; {gameResult.team1Result.player2?.name}
               </TableCell>
-              <TableCell>
+              <TableCell data-testid={gameResult.id + "team2"}>
                 {gameResult.team2Result.player1?.name} &amp; {gameResult.team2Result.player2?.name}
               </TableCell>
-              <TableCell>
+              <TableCell data-testid={gameResult.id + "result"}>
                 {gameResult.team1Result.points} - {gameResult.team2Result.points}
               </TableCell>
             </TableRow>
