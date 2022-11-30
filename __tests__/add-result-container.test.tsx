@@ -17,8 +17,8 @@ const checkAddResultTitles = () => {
     expect(screen.getByTestId("teamResultTitleJoukkue 1").textContent).toContain("Joukkue 1");
     expect(screen.getByTestId("teamResultTitleJoukkue 2").textContent).toContain("Joukkue 2");
     
-    expect(screen.getByTestId("playerSelectTitleJoukkue 1Pelaaja1").textContent).toContain("Pelaaja 1");
-    expect(screen.getByTestId("playerSelectTitleJoukkue 1Pelaaja2").textContent).toContain("Pelaaja 2");
-    expect(screen.getByTestId("playerSelectTitleJoukkue 2Pelaaja1").textContent).toContain("Pelaaja 1");
-    expect(screen.getByTestId("playerSelectTitleJoukkue 2Pelaaja2").textContent).toContain("Pelaaja 2");
+    expect(screen.getByTestId("playerSelectTitleJoukkue 1Pelaaja 1").textContent).toContain("Pelaaja 1");
+    expect(screen.getByTestId("playerSelectTitleJoukkue 1Pelaaja 2").textContent).toContain("Pelaaja 2");
+    expect(screen.getByTestId("playerSelectTitleJoukkue 2Pelaaja 1").textContent).toContain("Pelaaja 1");
+    expect(screen.getByTestId("playerSelectTitleJoukkue 2Pelaaja 2").textContent).toContain("Pelaaja 2");
 }
