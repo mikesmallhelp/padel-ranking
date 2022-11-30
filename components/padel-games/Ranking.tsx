@@ -10,7 +10,7 @@ import Player from "../../types/Player";
 const Ranking = ({ players }: { players: Player[] }) => {
   return (
     <React.Fragment>
-      <Title>Ranking</Title>
+      <Title titleTestId="rankingTitle">Ranking</Title>
       <Table size="small">
         <TableHead>
           <TableRow>

@@ -8,22 +8,39 @@ import { parseISO } from "date-fns";
 describe('index.tsx', () => {
   it('check the ranking', () => {
     render(<PadelGamesContainer players={players} gameResults={gameResults} />);
+
+    checkRankingTitles();
+    
     checkPlayerRanking({playerName: "Tommi", games: "2", points: "12"});
+    checkPlayerRanking({playerName: "Ville", games: "2", points: "12"});
+    checkPlayerRanking({playerName: "Jarkko", games: "2", points: "3"});
+    checkPlayerRanking({playerName: "Joonas", games: "2", points: "3"});
+    checkPlayerRanking({playerName: "Mika", games: "0", points: "0"});
   })  
 
   it('check the game results', () => {
     render(<PadelGamesContainer players={players} gameResults={gameResults} />);
-    checkGameResultsColumnTitles();
+    
+    checkGameResultsTitles();
     checkGameResult({gameNumber: 1, createdAt: "11.02.2022 11:30", team1: "Tommi & Ville", team2: "Jarkko & Joonas", result: "6 - 2"});
     checkGameResult({gameNumber: 2, createdAt: "10.02.2022 12:32", team1: "Ville & Tommi", team2: "Joonas & Jarkko", result: "6 - 1"});
   })
 })
 
-const checkPlayerRanking = ({ playerName, games, points }: {playerName: string, games: string, points: string}) => {
-  expect(screen.getByTestId("id" + playerName + "name").textContent).toContain(playerName);
+const checkRankingTitles = () => {
+  expect(screen.getByTestId("rankingTitle").textContent).toContain("Ranking");
+  expect(screen.getByTestId("rankingColumnTitleName").textContent).toContain("Nimi");
+  expect(screen.getByTestId("rankingColumnTitleGames").textContent).toContain("Pelit");
+  expect(screen.getByTestId("rankingColumnTitlePoints").textContent).toContain("Pisteet");
 }
 
-const checkGameResultsColumnTitles = () => {
+const checkPlayerRanking = ({ playerName, games, points }: {playerName: string, games: string, points: string}) => {
+  expect(screen.getByTestId("id" + playerName + "name").textContent).toContain(playerName);
+  expect(screen.getByTestId("id" + playerName + "games").textContent).toContain(games);
+  expect(screen.getByTestId("id" + playerName + "points").textContent).toContain(points);
+}
+
+const checkGameResultsTitles = () => {
   expect(screen.getByTestId("gameResultsTitle").textContent).toContain("Tulokset");
   expect(screen.getByTestId("gameResultsColumnTitleTime").textContent).toContain("Aika");
   expect(screen.getByTestId("gameResultsColumnTitleTeam1").textContent).toContain("Joukkue 1");
