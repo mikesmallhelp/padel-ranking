@@ -6,11 +6,11 @@ import Select from "@mui/material/Select";
 import { SelectChangeEvent } from "@mui/material";
 import { ReactNode } from "react";
 
-const PlayerSelect = ({ players, title, handleChange }: { players: Player[], title: string, 
-    handleChange: (event: SelectChangeEvent<string>, child: ReactNode) => void }) => {
+const PlayerSelect = ({ players, title, handleChange, teamResultTestTitle }: { players: Player[], title: string, 
+    handleChange: (event: SelectChangeEvent<string>, child: ReactNode) => void, teamResultTestTitle: string }) => {
     return (
         <FormControl fullWidth>
-            <InputLabel>{title}</InputLabel>
+            <InputLabel data-testid={"playerSelectTitle" + teamResultTestTitle + title}>{title}</InputLabel>
             <Select
                 defaultValue=""
                 onChange={handleChange}
