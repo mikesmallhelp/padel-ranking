@@ -9,8 +9,9 @@ describe('index.tsx', () => {
   it('check the ranking', () => {
     render(<PadelGamesContainer players={players} gameResults={gameResults} />);
 
+    checkDashboard();
     checkRankingTitles();
-    
+
     checkPlayerRanking({playerName: "Tommi", games: "2", points: "12"});
     checkPlayerRanking({playerName: "Ville", games: "2", points: "12"});
     checkPlayerRanking({playerName: "Jarkko", games: "2", points: "3"});
@@ -26,6 +27,13 @@ describe('index.tsx', () => {
     checkGameResult({gameNumber: 2, createdAt: "10.02.2022 12:32", team1: "Ville & Tommi", team2: "Joonas & Jarkko", result: "6 - 1"});
   })
 })
+
+const checkDashboard = () => {
+  expect(screen.getByTestId("dashboardTitle").textContent).toContain("Padel-pelit");
+  expect(screen.getByTestId("menuPadelGames").textContent).toContain("Padel-pelit");
+  expect(screen.getByTestId("menuAddResult").textContent).toContain("Lisää tulos");
+  expect(screen.getByTestId("menuPlayers").textContent).toContain("Pelaajat");
+}
 
 const checkRankingTitles = () => {
   expect(screen.getByTestId("rankingTitle").textContent).toContain("Ranking");

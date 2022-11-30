@@ -114,6 +114,7 @@ const Dashboard = ({ children, title }: { children: JSX.Element, title: string }
               color="inherit"
               noWrap
               sx={{ flexGrow: 1 }}
+              data-testid="dashboardTitle"
             >
               {title}
             </Typography>

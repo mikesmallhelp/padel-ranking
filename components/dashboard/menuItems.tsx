@@ -12,19 +12,19 @@ export const menuItems = (
       <ListItemIcon>
         <DashboardIcon />
       </ListItemIcon>
-      <ListItemText primary="Padel-pelit" />
+      <ListItemText data-testid="menuPadelGames" primary="Padel-pelit" />
     </ListItemButton>
     <ListItemButton href="/add-result-container">
       <ListItemIcon>
         <ShoppingCartIcon />
       </ListItemIcon>
-      <ListItemText primary="Lisää tulos" />
+      <ListItemText data-testid="menuAddResult" primary="Lisää tulos" />
     </ListItemButton>
     <ListItemButton href="/players-container">
       <ListItemIcon>
         <PeopleIcon />
       </ListItemIcon>
-      <ListItemText primary="Pelaajat" />
+      <ListItemText data-testid="menuPlayers" primary="Pelaajat" />
     </ListItemButton>
   </React.Fragment>
 );
