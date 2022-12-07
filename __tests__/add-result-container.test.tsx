@@ -1,7 +1,7 @@
 import { render, screen, fireEvent, within } from "@testing-library/react";
 import AddResultContainer from "../pages/add-result-container";
 import "@testing-library/jest-dom";
-import { players } from '../lib/tests-lib/mock-data';
+import { players, playersSmallSet } from '../lib/tests-lib/mock-data';
 import { checkDashboard } from "../lib/tests-lib/common-test-utils";
 
 describe('add-result-container.tsx', () => {
@@ -26,7 +26,7 @@ describe('add-result-container.tsx', () => {
     })
 
     it('check the player selects', () => {
-        render(<AddResultContainer players={players} />);
+        render(<AddResultContainer players={playersSmallSet} />);
         [1, 2, 4, 5].forEach(buttonRoleIndex => testPlayerSelectsForAllPlayers({ buttonRoleIndex: buttonRoleIndex }));
     })
 
@@ -37,7 +37,7 @@ describe('add-result-container.tsx', () => {
 })
 
 const testPlayerSelectsForAllPlayers = ({ buttonRoleIndex }: { buttonRoleIndex: number }) => {
-    ["Jarkko", "Joonas", "Mika", "Tommi", "Ville"].forEach(playerName => testSelect({buttonRoleIndex: buttonRoleIndex, menuItemText: playerName}));
+    ["Tommi", "Ville"].forEach(playerName => testSelect({buttonRoleIndex: buttonRoleIndex, menuItemText: playerName}));
 }
 
 const testPointsSelectsForAllPoints = ({ buttonRoleIndex }: { buttonRoleIndex: number }) => {
