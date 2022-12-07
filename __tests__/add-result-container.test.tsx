@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent, within } from "@testing-library/react";
 import AddResultContainer from "../pages/add-result-container";
 import "@testing-library/jest-dom";
 import { players } from '../lib/tests-lib/mock-data';
@@ -10,6 +10,17 @@ describe('index.tsx', () => {
 
         checkDashboard({ dashboardTitle: "Lisää tulos" });
         checkAddResultTitles();
+
+        //expect(screen.getByRole('link', { name: 'Pelaajatx' })).toBeInTheDocument();
+        expect(screen.getByTestId("playerSelectJoukkue 1Pelaaja 1")).toBeTruthy();
+        expect(screen.getByTestId("playerSelectJoukkue 1Pelaaja 1").childNodes.length).toBe(4);
+        //const user = userEvent.setup();
+        //expect(screen.getByTestId("playerNameSelectValueJoukkue 1Pelaaja 1Jarkko").textContent).toContain("Jarkko");
+
+        fireEvent.mouseDown(screen.getAllByRole("button")[1]);
+        const listbox = within(screen.getByRole("listbox"));
+        fireEvent.click(listbox.getByText(/Jarkko/i));
+        expect(screen.getByTestId("playerSelectJoukkue 1Pelaaja 1")).toHaveTextContent(/Jarkko/i);
     })
 })
 

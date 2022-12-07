@@ -15,10 +15,11 @@ const PlayerSelect = ({ players, title, teamResultTestTitle, handleChange  }: { 
             <Select
                 defaultValue=""
                 onChange={handleChange}
+                data-testid={"playerSelect" + teamResultTestTitle + title}
             >
                 {players.map(player => {
                     return (
-                        <MenuItem key={player.id} value={player.id}>
+                        <MenuItem key={player.id} value={player.id} data-testid={"playerNameSelectValue" + teamResultTestTitle + title + player.name}>
                             {player.name}
                         </MenuItem>
                     )
