@@ -10,11 +10,6 @@ export const players: Player[] = [
     { "id": "idMika", "name": "Mika", "games": 0, "points": 0 }
 ]
 
-export const playersSmallSet: Player[] = [
-    { "id": "idTommi", "name": "Tommi", "games": 2, "points": 12 },
-    { "id": "idVille", "name": "Ville", "games": 2, "points": 12 }
-]
-
 export const gameResults: GameResult[] = [
     {
         "id": "gameResult1",

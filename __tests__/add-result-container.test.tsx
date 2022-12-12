@@ -1,7 +1,7 @@
 import { render, screen, fireEvent, within } from "@testing-library/react";
 import AddResultContainer from "../pages/add-result-container";
 import "@testing-library/jest-dom";
-import { players, playersSmallSet } from '../lib/tests-lib/mock-data';
+import { players } from '../lib/tests-lib/mock-data';
 import { checkDashboard } from "../lib/tests-lib/common-test-utils";
 
 describe('add-result-container.tsx', () => {
@@ -25,26 +25,21 @@ describe('add-result-container.tsx', () => {
         expect(screen.getByTestId("pointsSelectTitleJoukkue 2Pisteet").textContent).toContain("Pisteet");
     })
 
-    it('check the player selects', () => {
-        render(<AddResultContainer players={playersSmallSet} />);
-        [1, 2, 4, 5].forEach(buttonRoleIndex => testPlayerSelectsForAllPlayers({ buttonRoleIndex: buttonRoleIndex }));
-    })
-
-    it('check the points selects', () => {
+    it('check adding new result', () => {
         render(<AddResultContainer players={players} />);
-        [3, 6].forEach(buttonRoleIndex => testPointsSelectsForAllPoints({ buttonRoleIndex: buttonRoleIndex }));
+
+        addSelect({buttonRoleIndex: 1, menuItemText: "Tommi"});
+        addSelect({buttonRoleIndex: 2, menuItemText: "Ville"});
+        addSelect({buttonRoleIndex: 3, menuItemText: "6"});
+
+        addSelect({buttonRoleIndex: 4, menuItemText: "Jarkko"});
+        addSelect({buttonRoleIndex: 5, menuItemText: "Joonas"});
+        addSelect({buttonRoleIndex: 6, menuItemText: "0"});
     })
 })
 
-const testPlayerSelectsForAllPlayers = ({ buttonRoleIndex }: { buttonRoleIndex: number }) => {
-    ["Tommi", "Ville"].forEach(playerName => testSelect({buttonRoleIndex: buttonRoleIndex, menuItemText: playerName}));
-}
-
-const testPointsSelectsForAllPoints = ({ buttonRoleIndex }: { buttonRoleIndex: number }) => {
-    ["0", "1", "2", "3", "4", "5", "6"].forEach(pointsValue => testSelect({buttonRoleIndex: buttonRoleIndex, menuItemText: pointsValue}));
-}
-
-const testSelect = ({ buttonRoleIndex, menuItemText}: { buttonRoleIndex: number, menuItemText: string }) => {
+const addSelect = ({ buttonRoleIndex, menuItemText}: { buttonRoleIndex: number, menuItemText: string }) => {
+    expect(screen.getAllByRole("button")[buttonRoleIndex].textContent).not.toEqual(menuItemText);
     fireEvent.mouseDown(screen.getAllByRole("button")[buttonRoleIndex]);
     const listbox = within(screen.getByRole("listbox"));
     fireEvent.click(listbox.getByText(menuItemText));
