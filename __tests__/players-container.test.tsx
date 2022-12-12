@@ -11,7 +11,7 @@ jest.mock("next/router", () => require("next-router-mock"));
 describe("players-container.tsx", () => {
     it("check the dashboard", () => {
         render(<AddPlayerContainer players={players} />);
-        checkDashboard({dashboardTitle: "Pelaajat"});
+        checkDashboard({ dashboardTitle: "Pelaajat" });
     });
 
     it("check the players list", () => {
@@ -20,10 +20,28 @@ describe("players-container.tsx", () => {
         expect(screen.getByTestId("playerListTitle").textContent).toContain("Pelaajat");
         expect(screen.getByTestId("playerListColumnTitleName").textContent).toContain("Nimi");
 
-        ["Jarkko", "Joonas", "Mika", "Tommi", "Ville"].forEach(playerName => checkPlayer({playerName: playerName}))
+        ["Jarkko", "Joonas", "Mika", "Tommi", "Ville"].forEach(playerName => checkPlayer({ playerName: playerName }))
+    });
+
+    it("check adding a new player", () => {
+        render(<AddPlayerContainer players={players} />);
+
+        expect(screen.getByTestId("addPlayerTitle").textContent).toContain("Lisää pelaaja");
+        expect(screen.getByTestId("addPlayerName").textContent).toContain("Nimi");
+
+        const playerNameInput = screen.getByTestId("addPlayerName").querySelector("input");
+        if (playerNameInput != null) {
+            fireEvent.change(playerNameInput, { target: { value: "Olli" } });
+        }
+        fireEvent.click(screen.getByRole("button", { name: "Lisää" }));
+
+        expect(fetchMock.mock.calls.length).toEqual(1);
+        expect(fetchMock.mock.calls[0][0]).toEqual("/api/add-player");
+        expect(fetchMock.mock.calls[0][1]).toEqual({ "body": "{\"name\":\"Olli\"}", 
+                                     "headers": { "Content-Type": "application/json" }, "method": "POST" });
     });
 });
 
-const checkPlayer = ({ playerName }: {playerName: string}) => {
+const checkPlayer = ({ playerName }: { playerName: string }) => {
     expect(screen.getByTestId("id" + playerName + "Name").textContent).toContain(playerName);
 }

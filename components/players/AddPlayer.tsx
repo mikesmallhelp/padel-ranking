@@ -33,7 +33,7 @@ const AddPlayer = ({ }: {}) => {
         <React.Fragment>
             <Grid container spacing={3}>
                 <Grid item xs={12}>
-                    <Title>Lisää pelaaja</Title>
+                    <Title titleTestId="addPlayerTitle">Lisää pelaaja</Title>
                 </Grid>
                 <Grid item xs={12}>
                     <TextField
@@ -42,6 +42,7 @@ const AddPlayer = ({ }: {}) => {
                         value={playerName}
                         fullWidth
                         onChange={(e) => setPlayerName(e.target.value)}
+                        data-testid="addPlayerName"
                     />
                 </Grid>
                 <Grid item container xs={12} justifyContent="flex-end">
