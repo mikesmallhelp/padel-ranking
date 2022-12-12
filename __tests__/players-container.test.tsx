@@ -1,6 +1,6 @@
 import { enableFetchMocks } from "jest-fetch-mock";
 enableFetchMocks();
-import { render, screen, fireEvent, within } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import AddPlayerContainer from "../pages/players-container";
 import "@testing-library/jest-dom";
 import { players } from "../lib/tests-lib/mock-data";
@@ -23,7 +23,7 @@ describe("players-container.tsx", () => {
         ["Jarkko", "Joonas", "Mika", "Tommi", "Ville"].forEach(playerName => checkPlayer({ playerName: playerName }))
     });
 
-    it("check adding a new player", () => {
+    it("check adding a new player", async () => {
         render(<AddPlayerContainer players={players} />);
 
         expect(screen.getByTestId("addPlayerTitle").textContent).toContain("Lisää pelaaja");
@@ -35,10 +35,14 @@ describe("players-container.tsx", () => {
         }
         fireEvent.click(screen.getByRole("button", { name: "Lisää" }));
 
-        expect(fetchMock.mock.calls.length).toEqual(1);
-        expect(fetchMock.mock.calls[0][0]).toEqual("/api/add-player");
-        expect(fetchMock.mock.calls[0][1]).toEqual({ "body": "{\"name\":\"Olli\"}", 
-                                     "headers": { "Content-Type": "application/json" }, "method": "POST" });
+        await waitFor(() => {
+            expect(fetchMock.mock.calls.length).toEqual(1);
+            expect(fetchMock.mock.calls[0][0]).toEqual("/api/add-player");
+            expect(fetchMock.mock.calls[0][1]).toEqual({
+                "body": "{\"name\":\"Olli\"}",
+                "headers": { "Content-Type": "application/json" }, "method": "POST"
+            });
+        })
     });
 });
 

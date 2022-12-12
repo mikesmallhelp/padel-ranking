@@ -3,18 +3,18 @@ enableFetchMocks();
 import { render, screen, fireEvent, within } from "@testing-library/react";
 import AddResultContainer from "../pages/add-result-container";
 import "@testing-library/jest-dom";
-import { players } from '../lib/tests-lib/mock-data';
+import { players } from "../lib/tests-lib/mock-data";
 import { checkDashboard } from "../lib/tests-lib/common-test-utils";
 
-jest.mock('next/router', () => require('next-router-mock'));
+jest.mock("next/router", () => require("next-router-mock"));
 
-describe('add-result-container.tsx', () => {
-    it('check the dashboard', () => {
+describe("add-result-container.tsx", () => {
+    it("check the dashboard", () => {
         render(<AddResultContainer players={players} />);
         checkDashboard({ dashboardTitle: "Lisää tulos" });
     })
 
-    it('check the titles', () => {
+    it("check the titles", () => {
         render(<AddResultContainer players={players} />);
 
         expect(screen.getByTestId("teamResultTitleJoukkue 1").textContent).toContain("Joukkue 1");
@@ -29,7 +29,7 @@ describe('add-result-container.tsx', () => {
         expect(screen.getByTestId("pointsSelectTitleJoukkue 2Pisteet").textContent).toContain("Pisteet");
     })
 
-    it('check adding new result', () => {
+    it("check adding new result", () => {
         render(<AddResultContainer players={players} />);
 
         addSelect({ buttonRoleIndex: 1, menuItemText: "Tommi" });
