@@ -4,13 +4,13 @@ import "@testing-library/jest-dom";
 import { players, gameResults } from "../lib/tests-lib/mock-data";
 import { checkDashboard } from "../lib/tests-lib/common-test-utils";
 
-describe('index.tsx', () => {
-  it('check the dashboard', () => {
+describe("index.tsx", () => {
+  it("check the dashboard", () => {
     render(<PadelGamesContainer players={players} gameResults={gameResults} />);
     checkDashboard({dashboardTitle: "Padel-pelit"});
   })
 
-  it('check the ranking', () => {
+  it("check the ranking", () => {
     render(<PadelGamesContainer players={players} gameResults={gameResults} />);
 
     checkRankingTitles();
@@ -22,7 +22,7 @@ describe('index.tsx', () => {
     checkPlayerRanking({playerName: "Mika", games: "0", points: "0"});
   })  
 
-  it('check the game results', () => {
+  it("check the game results", () => {
     render(<PadelGamesContainer players={players} gameResults={gameResults} />);
     
     checkGameResultsTitles();
