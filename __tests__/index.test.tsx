@@ -39,9 +39,9 @@ const checkRankingTitles = () => {
 }
 
 const checkPlayerRanking = ({ playerName, games, points }: {playerName: string, games: string, points: string}) => {
-  expect(screen.getByTestId("id" + playerName + "name").textContent).toContain(playerName);
-  expect(screen.getByTestId("id" + playerName + "games").textContent).toContain(games);
-  expect(screen.getByTestId("id" + playerName + "points").textContent).toContain(points);
+  expect(screen.getByTestId("id" + playerName + "Name").textContent).toContain(playerName);
+  expect(screen.getByTestId("id" + playerName + "Games").textContent).toContain(games);
+  expect(screen.getByTestId("id" + playerName + "Points").textContent).toContain(points);
 }
 
 const checkGameResultsTitles = () => {
@@ -56,9 +56,9 @@ const checkGameResult = ({ gameNumber, createdAt, team1, team2, result }: {
   gameNumber: number, createdAt: string, team1: string,
   team2: string, result: string
 }) => {
-  expect(screen.getByTestId("gameResult" + gameNumber + "createdAt").textContent).toContain(createdAt);
-  expect(screen.getByTestId("gameResult" + gameNumber + "team1").textContent).toContain(team1);
-  expect(screen.getByTestId("gameResult" + gameNumber + "team2").textContent).toContain(team2);
-  expect(screen.getByTestId("gameResult" + gameNumber + "result").textContent).toContain(result);
+  expect(screen.getByTestId("gameResult" + gameNumber + "CreatedAt").textContent).toContain(createdAt);
+  expect(screen.getByTestId("gameResult" + gameNumber + "Team1").textContent).toContain(team1);
+  expect(screen.getByTestId("gameResult" + gameNumber + "Team2").textContent).toContain(team2);
+  expect(screen.getByTestId("gameResult" + gameNumber + "Result").textContent).toContain(result);
 }
 
