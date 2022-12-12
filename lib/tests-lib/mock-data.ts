@@ -13,7 +13,7 @@ export const players: Player[] = [
 export const gameResults: GameResult[] = [
     {
         "id": "gameResult1",
-        "createdAt": parseISO('2022-02-11T11:30:30'),
+        "createdAt": parseISO("2022-02-11T11:30:30"),
         "team1Result":
         {
             "player1Id": "idTommi",
@@ -32,7 +32,7 @@ export const gameResults: GameResult[] = [
     },
     {
         "id": "gameResult2",
-        "createdAt": parseISO('2022-02-10T12:32:32'),
+        "createdAt": parseISO("2022-02-10T12:32:32"),
         "team1Result":
         {
             "player1Id": "idVille",
