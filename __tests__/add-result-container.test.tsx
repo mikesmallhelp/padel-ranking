@@ -41,6 +41,7 @@ describe('add-result-container.tsx', () => {
         addSelect({ buttonRoleIndex: 6, menuItemText: "0" });
 
         fireEvent.click(screen.getByRole("button", { name: "Lisää" }));
+        
         expect(fetchMock.mock.calls.length).toEqual(1);
         expect(fetchMock.mock.calls[0][0]).toEqual("/api/add-result");
         expect(fetchMock.mock.calls[0][1]).toEqual({
