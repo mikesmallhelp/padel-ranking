@@ -5,10 +5,14 @@ import { players, gameResults } from "../lib/tests-lib/mock-data";
 import { checkDashboard } from "../lib/tests-lib/common-test-utils";
 
 describe('index.tsx', () => {
+  it('check the dashboard', () => {
+    render(<PadelGamesContainer players={players} gameResults={gameResults} />);
+    checkDashboard({dashboardTitle: "Padel-pelit"});
+  })
+
   it('check the ranking', () => {
     render(<PadelGamesContainer players={players} gameResults={gameResults} />);
 
-    checkDashboard({dashboardTitle: "Padel-pelit"});
     checkRankingTitles();
 
     checkPlayerRanking({playerName: "Tommi", games: "2", points: "12"});

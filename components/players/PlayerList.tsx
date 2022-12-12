@@ -10,17 +10,17 @@ import Player from "../../types/Player";
 const PlayerList = ({ players }: { players: Player[] }) => {
   return (
     <React.Fragment>
-      <Title>Pelaajat</Title>
+      <Title titleTestId="playerListTitle">Pelaajat</Title>
       <Table size="small">
         <TableHead>
           <TableRow>
-            <TableCell>Nimi</TableCell>
+            <TableCell data-testid="playerListColumnTitleName">Nimi</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {players.map((player) => (
             <TableRow key={player.id}>
-              <TableCell>{player.name}</TableCell>
+              <TableCell data-testid={player.id + "Name"}>{player.name}</TableCell>
             </TableRow>
           ))}
         </TableBody>
