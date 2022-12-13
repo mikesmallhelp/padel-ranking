@@ -10,6 +10,7 @@ module.exports = {
         "!<rootDir>/.next/**",
         "!<rootDir>/*.config.js",
         "!<rootDir>/coverage/**",
+        "!<rootDir>/e2e-tests/**",
     ],
     moduleNameMapper: {
         // Handle CSS imports (with CSS modules)
