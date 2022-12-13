@@ -23,6 +23,8 @@ async function run () {
     throw new Error(`Failed with response code ${response.status()}`)
   }
 
+  expect(await page.locator('data-testid=dashboardTitle').textContent()).toBe("Padel-pexxlit");
+
   // We snap a screenshot.
   await page.screenshot({ path: 'screenshot.jpg' })
 
