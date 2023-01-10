@@ -1,10 +1,8 @@
-# We are using Playwright but you may use your E2E framework of choice
-name: Playwright Tests
-
-on:
-  deployment_status:
-    
-  run-e2es:
+name: GitHub Actions Demo
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on: [push]
+jobs:
+  Explore-GitHub-Actions:
     if: github.event_name == 'deployment_status' && github.event.deployment_status.state == 'success'
     runs-on: ubuntu-latest
     steps:
