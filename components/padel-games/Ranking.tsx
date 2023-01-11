@@ -10,7 +10,7 @@ import Player from "../../types/Player";
 const Ranking = ({ players }: { players: Player[] }) => {
   return (
     <React.Fragment>
-      <Title titleTestId="rankingTitle">Ranking 10.1.2023 18:12</Title>
+      <Title titleTestId="rankingTitle">Ranking 11.1.2023 18:30</Title>
       <Table size="small">
         <TableHead>
           <TableRow>
