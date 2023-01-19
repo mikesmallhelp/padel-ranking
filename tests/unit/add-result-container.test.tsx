@@ -1,10 +1,10 @@
 import { enableFetchMocks } from "jest-fetch-mock";
 enableFetchMocks();
 import { render, screen, fireEvent, within } from "@testing-library/react";
-import AddResultContainer from "../pages/add-result-container";
+import AddResultContainer from "../../pages/add-result-container";
 import "@testing-library/jest-dom";
-import { players } from "../lib/tests-lib/mock-data";
-import { checkDashboard } from "../lib/tests-lib/common-test-utils";
+import { players } from "../../lib/tests-lib/mock-data";
+import { checkDashboard } from "../../lib/tests-lib/common-test-utils";
 
 jest.mock("next/router", () => require("next-router-mock"));
 

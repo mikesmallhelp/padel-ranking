@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
-import PadelGamesContainer from "../pages/index";
+import PadelGamesContainer from "../../pages/index";
 import "@testing-library/jest-dom";
-import { players, gameResults } from "../lib/tests-lib/mock-data";
-import { checkDashboard } from "../lib/tests-lib/common-test-utils";
+import { players, gameResults } from "../../lib/tests-lib/mock-data";
+import { checkDashboard } from "../../lib/tests-lib/common-test-utils";
 
 describe("index.tsx", () => {
   it("check the dashboard", () => {
