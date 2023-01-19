@@ -19,7 +19,7 @@ describe("index.tsx", () => {
     checkPlayerRanking({playerName: "Ville", games: "2", points: "12"});
     checkPlayerRanking({playerName: "Jarkko", games: "2", points: "3"});
     checkPlayerRanking({playerName: "Joonas", games: "2", points: "3"});
-    checkPlayerRanking({playerName: "Mika", games: "0", points: "0"});
+    checkPlayerRanking({playerName: "Mikax", games: "0", points: "0"});
   })  
 
   it("check the game results", () => {
