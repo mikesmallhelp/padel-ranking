@@ -1,7 +1,11 @@
 import { test, expect, Page } from "@playwright/test";
 
-test("test the ranking page", async ({ page }) => {
-  await page.goto("https://padel-ranking.vercel.app/");
+test("test the ranking page", async ({ page, baseURL }) => {
+  if (!baseURL) {
+    throw Error("The base url not defined!");
+  }
+  
+  await page.goto(baseURL);
   await checkPlayerRanking({page: page, playerName: "Tommi", games: "2", points: "12"});
   await checkPlayerRanking({page: page, playerName: "Ville", games: "2", points: "12"});
   await checkPlayerRanking({page: page, playerName: "Jarkko", games: "2", points: "3"});
