@@ -33,6 +33,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - name: Install postgresql-client
+      run: sudo apt install postgresql-client
+    - name: Initialize database
+      run: psql -f tests/e2e/initialize.sql ${{ secrets.DATABASE_URL }} 
     - name: Install dependencies
       run: npm ci && npx playwright install --with-deps
     - name: Run tests
