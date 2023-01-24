@@ -7,7 +7,29 @@ on:
     branches:
       - main
 jobs:
+  run-unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: npm install
+      - name: Run tests
+        run: npm run test
+  build-and-deploy-to-production:
+    needs: run-unit-tests 
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Vercel CLI
+        run: npm install --global vercel@canary
+      - name: Pull Vercel environment information
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Build project artifacts
+        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Deploy project artifacts to Vercel
+        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }} --env DATABASE_URL=${{ secrets.DATABASE_URL }}
   run-e2e-tests:
+    needs: build-and-deploy-to-production
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
