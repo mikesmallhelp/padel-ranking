@@ -20,4 +20,4 @@ jobs:
     - name: Run tests
       run: npm run test:e2e
       env:
-        PLAYWRIGHT_TEST_BASE_URL: ${{ env.PLAYWRIGHT_TEST_BASE_URL }}
+        PLAYWRIGHT_TEST_BASE_URL: ${{ vars.PLAYWRIGHT_TEST_BASE_URL }}
