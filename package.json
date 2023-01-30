@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "test-with-watch": "jest --watch",
-    "test": "jest",
+    "test:unit": "jest",
     "test:e2e": "playwright test",
     "post-update": "echo \"codesandbox preview only, need an update\" && yarn upgrade --latest"
   },
