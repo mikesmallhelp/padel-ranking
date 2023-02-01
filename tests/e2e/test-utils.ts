@@ -1,9 +1,9 @@
 import { expect, Page } from "@playwright/test";
 
 export const checkPlayerRanking = async ({ page, playerName, games, points }: { page: Page, playerName: string, games: string, points: string }) => {
-    expect(await page.locator("data-testid=id" + playerName + "Name").textContent()).toContain(playerName);
-    expect(await page.locator("data-testid=id" + playerName + "Games").textContent()).toContain(games);
-    expect(await page.locator("data-testid=id" + playerName + "Points").textContent()).toContain(points);
+    expect(await page.locator("data-testid=" + playerName + "Name").textContent()).toContain(playerName);
+    expect(await page.locator("data-testid=" + playerName + "Games").textContent()).toContain(games);
+    expect(await page.locator("data-testid=" + playerName + "Points").textContent()).toContain(points);
 }
 
 export const checkGameResult = async ({ page, gameNumber, createdAt, team1, team2, result }: {

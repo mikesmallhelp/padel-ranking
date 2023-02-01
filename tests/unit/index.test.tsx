@@ -39,9 +39,9 @@ const checkRankingTitles = () => {
 }
 
 const checkPlayerRanking = ({ playerName, games, points }: {playerName: string, games: string, points: string}) => {
-  expect(screen.getByTestId("id" + playerName + "Name").textContent).toContain(playerName);
-  expect(screen.getByTestId("id" + playerName + "Games").textContent).toContain(games);
-  expect(screen.getByTestId("id" + playerName + "Points").textContent).toContain(points);
+  expect(screen.getByTestId(playerName + "Name").textContent).toContain(playerName);
+  expect(screen.getByTestId(playerName + "Games").textContent).toContain(games);
+  expect(screen.getByTestId(playerName + "Points").textContent).toContain(points);
 }
 
 const checkGameResultsTitles = () => {

@@ -22,9 +22,9 @@ const Ranking = ({ players }: { players: Player[] }) => {
         <TableBody>
           {players.map((player) => (
             <TableRow key={player.id}>
-              <TableCell data-testid={player.id + "Name"}>{player.name}</TableCell>
-              <TableCell data-testid={player.id + "Games"}>{player.games}</TableCell>
-              <TableCell data-testid={player.id + "Points"}>{player.points}</TableCell>
+              <TableCell data-testid={player.name + "Name"}>{player.name}</TableCell>
+              <TableCell data-testid={player.name + "Games"}>{player.games}</TableCell>
+              <TableCell data-testid={player.name + "Points"}>{player.points}</TableCell>
             </TableRow>
           ))}
         </TableBody>
