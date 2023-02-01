@@ -23,6 +23,19 @@ test("test the game results", async ({ page, baseURL }) => {
   await checkGameResult({page: page, gameNumber: 2, createdAt: "09.11.2022", team1: "Tommi & Ville", team2: "Jarkko & Joonas", result: "6 - 2"});
 });
 
+test("test the players", async ({ page, baseURL }) => {
+  if (!baseURL) {
+    throw Error("The base url not defined!");
+  }
+  
+  await page.goto(baseURL + "players-container");
+  await checkPlayer({page: page, playerName: "Jarkko"});
+  await checkPlayer({page: page, playerName: "Joonas"});
+  await checkPlayer({page: page, playerName: "Mika"});
+  await checkPlayer({page: page, playerName: "Tommi"});
+  await checkPlayer({page: page, playerName: "Ville"});
+});
+
 const checkPlayerRanking = async ({ page, playerName, games, points }: {page: Page, playerName: string, games: string, points: string}) => {
   expect(await page.locator("data-testid=id" + playerName + "Name").textContent()).toContain(playerName);
   expect(await page.locator("data-testid=id" + playerName + "Games").textContent()).toContain(games);
@@ -38,4 +51,8 @@ const checkGameResult = async ({ page, gameNumber, createdAt, team1, team2, resu
   expect(await page.locator("data-testid=gr" + gameNumber + "Team1").textContent()).toContain(team1);
   expect(await page.locator("data-testid=gr" + gameNumber + "Team2").textContent()).toContain(team2);
   expect(await page.locator("data-testid=gr" + gameNumber + "Result").textContent()).toContain(result);
+}
+
+const checkPlayer = async ({ page, playerName }: { page: Page, playerName: string }) => {
+  expect(await page.locator("data-testid=id" + playerName + "Name").textContent()).toContain(playerName);
 }
