@@ -20,7 +20,7 @@ const PlayerList = ({ players }: { players: Player[] }) => {
         <TableBody>
           {players.map((player) => (
             <TableRow key={player.id}>
-              <TableCell data-testid={player.id + "Name"}>{player.name}</TableCell>
+              <TableCell data-testid={player.name + "Name"}>{player.name}</TableCell>
             </TableRow>
           ))}
         </TableBody>

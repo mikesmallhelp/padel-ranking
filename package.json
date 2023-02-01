@@ -7,9 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test-with-watch": "jest --watch",
+    "test:unit-watch": "jest --watch",
     "test:unit": "jest",
-    "test:e2e": "playwright test",
+    "test:e2e-initial-content": "playwright test ./tests/e2e/test-initial-content.test.ts",
+    "test:e2e-adding-data": "playwright test ./tests/e2e/test-adding-data.test.ts",
     "post-update": "echo \"codesandbox preview only, need an update\" && yarn upgrade --latest"
   },
   "dependencies": {

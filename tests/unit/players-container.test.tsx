@@ -27,9 +27,9 @@ describe("players-container.tsx", () => {
         render(<AddPlayerContainer players={players} />);
 
         expect(screen.getByTestId("addPlayerTitle").textContent).toContain("Lisää pelaaja");
-        expect(screen.getByTestId("addPlayerName").textContent).toContain("Nimi");
+        expect(screen.getByTestId("playerNameTextField").textContent).toContain("Nimi");
 
-        const playerNameInput = screen.getByTestId("addPlayerName").querySelector("input");
+        const playerNameInput = screen.getByTestId("playerNameTextField").querySelector("input");
         if (playerNameInput != null) {
             fireEvent.change(playerNameInput, { target: { value: "Olli" } });
         }
@@ -47,5 +47,5 @@ describe("players-container.tsx", () => {
 });
 
 const checkPlayer = ({ playerName }: { playerName: string }) => {
-    expect(screen.getByTestId("id" + playerName + "Name").textContent).toContain(playerName);
+    expect(screen.getByTestId(playerName + "Name").textContent).toContain(playerName);
 }

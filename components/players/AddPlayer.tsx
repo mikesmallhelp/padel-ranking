@@ -42,11 +42,11 @@ const AddPlayer = ({ }: {}) => {
                         value={playerName}
                         fullWidth
                         onChange={(e) => setPlayerName(e.target.value)}
-                        data-testid="addPlayerName"
+                        data-testid="playerNameTextField"
                     />
                 </Grid>
                 <Grid item container xs={12} justifyContent="flex-end">
-                    <Button variant="contained" onClick={handleButtonClick}>Lisää</Button>
+                    <Button variant="contained" onClick={handleButtonClick} data-testid="addPlayerButton">Lisää</Button>
                 </Grid>
             </Grid>
         </React.Fragment>
