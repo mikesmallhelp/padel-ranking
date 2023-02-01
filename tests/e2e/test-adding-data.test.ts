@@ -1,5 +1,5 @@
 import { test } from "@playwright/test";
-import { checkPlayerRanking, checkGameResult, checkPlayer } from "./test-utils";
+import { checkPlayerRanking, checkPlayer } from "./test-utils";
 
 test("test adding the new player", async ({ page, baseURL }) => {
   if (!baseURL) {
