@@ -75,4 +75,10 @@ npm run dev
 
 Open your browser in the url localhost:3000.
 
+## TODO
+
+- End to end tests test only date in the game results. Time is not tested, because couldn't create date and time with the time zone. PostgreSQL
+  has a guide for that, but couldn't get that working properly. This means that when testing time end to end test works for example in the winter time
+  but not summer time (in Finland).
+
 
