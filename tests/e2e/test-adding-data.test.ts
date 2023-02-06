@@ -1,6 +1,17 @@
 import { test } from "@playwright/test";
 import { checkPlayerRanking, checkPlayer } from "./test-utils";
 
+test("test adding the new game result", async ({ page, baseURL }) => {
+  if (!baseURL) {
+    throw Error("The base url not defined!");
+  }
+  
+  await page.goto(baseURL + "add-result-container");
+
+  await page.locator("[data-testid='playerSelectJoukkue 1Pelaaja 1']").click();
+  await page.getByRole("listbox").getByTestId("playerNameSelectValueJoukkue 1Pelaaja 1Joonas").click();
+});
+
 test("test adding the new player", async ({ page, baseURL }) => {
   if (!baseURL) {
     throw Error("The base url not defined!");

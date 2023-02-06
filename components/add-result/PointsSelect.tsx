@@ -13,6 +13,7 @@ const PointsSelect = ({ title, teamResultTestTitle, handleChange }: { title: str
         <FormControl fullWidth>
             <InputLabel data-testid={"pointsSelectTitle" + teamResultTestTitle + title}>{title}</InputLabel>
             <Select
+                data-testid={"pointsSelect" + teamResultTestTitle + title}
                 defaultValue=""
                 onChange={handleChange}
             >
