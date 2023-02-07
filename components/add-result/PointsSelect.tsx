@@ -19,7 +19,7 @@ const PointsSelect = ({ title, teamResultTestTitle, handleChange }: { title: str
             >
                 {pointsValues.map(pointsValue => {
                     return (
-                        <MenuItem key={pointsValue} value={pointsValue}>
+                        <MenuItem key={pointsValue} value={pointsValue} data-testid={"pointsSelectValue" + teamResultTestTitle + title + pointsValue}>
                             {pointsValue}
                         </MenuItem>
                     )

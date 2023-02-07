@@ -6,15 +6,15 @@ export const checkPlayerRanking = async ({ page, playerName, games, points }: { 
     expect(await page.locator("data-testid=" + playerName + "Points").textContent()).toContain(points);
 }
 
-export const checkGameResult = async ({ page, gameNumber, createdAt, team1, team2, result }: {
-    page: Page, gameNumber: number, createdAt: string, team1: string,
+export const checkGameResult = async ({ page, createdAt, team1, team2, result }: {
+    page: Page, createdAt: string, team1: string,
     team2: string, result: string
 }) => {
-    const createdAtFromPage = await page.locator("data-testid=gr" + gameNumber + "CreatedAt").textContent()
+    const createdAtFromPage = await page.locator("data-testid=" + "gameResult" + createdAt + "CreatedAt").textContent()
     expect(createdAtFromPage?.substring(0, 10)).toContain(createdAt);
-    expect(await page.locator("data-testid=gr" + gameNumber + "Team1").textContent()).toContain(team1);
-    expect(await page.locator("data-testid=gr" + gameNumber + "Team2").textContent()).toContain(team2);
-    expect(await page.locator("data-testid=gr" + gameNumber + "Result").textContent()).toContain(result);
+    expect(await page.locator("data-testid=gameResult" + createdAt + "Team1").textContent()).toContain(team1);
+    expect(await page.locator("data-testid=gameResult" + createdAt + "Team2").textContent()).toContain(team2);
+    expect(await page.locator("data-testid=gameResult" + createdAt + "Result").textContent()).toContain(result);
 }
 
 export const checkPlayer = async ({ page, playerName }: { page: Page, playerName: string }) => {

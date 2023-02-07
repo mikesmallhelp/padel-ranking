@@ -20,8 +20,8 @@ test("test the game results", async ({ page, baseURL }) => {
   }
   
   await page.goto(baseURL);
-  await checkGameResult({page: page, gameNumber: 1, createdAt: "08.11.2022", team1: "Tommi & Ville", team2: "Jarkko & Joonas", result: "6 - 1"});
-  await checkGameResult({page: page, gameNumber: 2, createdAt: "09.11.2022", team1: "Tommi & Ville", team2: "Jarkko & Joonas", result: "6 - 2"});
+  await checkGameResult({page: page, createdAt: "08.11.2022", team1: "Tommi & Ville", team2: "Jarkko & Joonas", result: "6 - 1"});
+  await checkGameResult({page: page, createdAt: "09.11.2022", team1: "Tommi & Ville", team2: "Jarkko & Joonas", result: "6 - 2"});
 });
 
 test("test the players", async ({ page, baseURL }) => {

@@ -24,16 +24,16 @@ const GameResults = ({ gameResults }: { gameResults: GameResult[] }) => {
         <TableBody>
           {gameResults.map((gameResult) => (
             <TableRow key={gameResult.id}>
-              <TableCell data-testid={gameResult.id + "CreatedAt"}>
+              <TableCell data-testid={getGameResultTestId(gameResult, "CreatedAt")}>
                 {gameResult.createdAt ? format(gameResult.createdAt, "dd.MM.yyyy HH:mm") : ""}
               </TableCell>
-              <TableCell data-testid={gameResult.id + "Team1"}>
+              <TableCell data-testid={getGameResultTestId(gameResult, "Team1")}>
                 {gameResult.team1Result.player1?.name} &amp; {gameResult.team1Result.player2?.name}
               </TableCell>
-              <TableCell data-testid={gameResult.id + "Team2"}>
+              <TableCell data-testid={getGameResultTestId(gameResult, "Team2")}>
                 {gameResult.team2Result.player1?.name} &amp; {gameResult.team2Result.player2?.name}
               </TableCell>
-              <TableCell data-testid={gameResult.id + "Result"}>
+              <TableCell data-testid={getGameResultTestId(gameResult, "Result")}>
                 {gameResult.team1Result.points} - {gameResult.team2Result.points}
               </TableCell>
             </TableRow>
@@ -42,6 +42,10 @@ const GameResults = ({ gameResults }: { gameResults: GameResult[] }) => {
       </Table>
     </React.Fragment>
   )
+}
+
+function getGameResultTestId(gameResult: GameResult, lastPart: string) {
+  return "gameResult" + format(gameResult.createdAt, "dd.MM.yyyy") + lastPart;
 }
 
 export default GameResults;

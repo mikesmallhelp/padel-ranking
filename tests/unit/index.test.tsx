@@ -26,8 +26,8 @@ describe("index.tsx", () => {
     render(<PadelGamesContainer players={players} gameResults={gameResults} />);
     
     checkGameResultsTitles();
-    checkGameResult({gameNumber: 1, createdAt: "11.02.2022 11:30", team1: "Tommi & Ville", team2: "Jarkko & Joonas", result: "6 - 2"});
-    checkGameResult({gameNumber: 2, createdAt: "10.02.2022 12:32", team1: "Ville & Tommi", team2: "Joonas & Jarkko", result: "6 - 1"});
+    checkGameResult({gameNumber: 1, createdAt: "11.02.2022", team1: "Tommi & Ville", team2: "Jarkko & Joonas", result: "6 - 2"});
+    checkGameResult({gameNumber: 2, createdAt: "10.02.2022", team1: "Ville & Tommi", team2: "Joonas & Jarkko", result: "6 - 1"});
   })
 })
 
@@ -52,13 +52,13 @@ const checkGameResultsTitles = () => {
   expect(screen.getByTestId("gameResultsColumnTitleResult").textContent).toContain("Tulos");
 }
 
-const checkGameResult = ({ gameNumber, createdAt, team1, team2, result }: {
+const checkGameResult = ({ createdAt, team1, team2, result }: {
   gameNumber: number, createdAt: string, team1: string,
   team2: string, result: string
 }) => {
-  expect(screen.getByTestId("gameResult" + gameNumber + "CreatedAt").textContent).toContain(createdAt);
-  expect(screen.getByTestId("gameResult" + gameNumber + "Team1").textContent).toContain(team1);
-  expect(screen.getByTestId("gameResult" + gameNumber + "Team2").textContent).toContain(team2);
-  expect(screen.getByTestId("gameResult" + gameNumber + "Result").textContent).toContain(result);
+  expect(screen.getByTestId("gameResult" + createdAt + "CreatedAt").textContent).toContain(createdAt);
+  expect(screen.getByTestId("gameResult" + createdAt + "Team1").textContent).toContain(team1);
+  expect(screen.getByTestId("gameResult" + createdAt + "Team2").textContent).toContain(team2);
+  expect(screen.getByTestId("gameResult" + createdAt + "Result").textContent).toContain(result);
 }
 

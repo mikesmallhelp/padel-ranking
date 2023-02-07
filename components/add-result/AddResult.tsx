@@ -83,7 +83,7 @@ const AddResult = ({ players }: { players: Player[] }) => {
                 </Paper>
             </Grid>
             <Grid item xs={12} container justifyContent="flex-end">
-                <Button variant="contained" onClick={handleButtonClick}>Lisää</Button>
+                <Button variant="contained" onClick={handleButtonClick} data-testid="addGameResultButton">Lisää</Button>
             </Grid>
         </Grid>
     )
