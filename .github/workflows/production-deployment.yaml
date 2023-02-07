@@ -41,5 +41,7 @@ jobs:
       run: npm ci && npx playwright install --with-deps
     - name: Run tests for initial database
       run: npm run test:e2e-initial-content
+    - name: Run tests which add data
+      run: npm run e2e-adding-data
       env:
         PLAYWRIGHT_TEST_BASE_URL: ${{ vars.PLAYWRIGHT_TEST_BASE_URL }}
