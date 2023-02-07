@@ -1,5 +1,6 @@
 import { test, Page } from "@playwright/test";
 import { checkPlayerRanking, checkPlayer, checkGameResult } from "./test-utils";
+import { format } from "date-fns";
 
 test("test adding the new game result", async ({ page, baseURL }) => {
   if (!baseURL) {
@@ -15,7 +16,8 @@ test("test adding the new game result", async ({ page, baseURL }) => {
   await checkPlayerRanking({page: page, playerName: "Ville", games: "3", points: "18"});
   await checkPlayerRanking({page: page, playerName: "Jarkko", games: "3", points: "6"});
   await checkPlayerRanking({page: page, playerName: "Joonas", games: "3", points: "6"});
-  await checkGameResult({page: page, createdAt: "07.02.2023", team1: "Tommi & Ville", team2: "Jarkko & Joonas", result: "6 - 3"});
+  await checkGameResult({page: page, createdAt: format(new Date(), "dd.MM.yyyy"), 
+                        team1: "Tommi & Ville", team2: "Jarkko & Joonas", result: "6 - 3"});
 });
 
 test("test adding the new player", async ({ page, baseURL }) => {
