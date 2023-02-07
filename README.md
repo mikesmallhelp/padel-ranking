@@ -113,7 +113,7 @@ The file `.github/workflows/production-deployment.yaml` contains following jobs:
   - VERCEL_ORG_ID
   - VERCEL_PROJECT_ID
   - VERCEL_TOKEN
-  - DATABASE_URL (something like this `postgres://xxxxxx:yyyyyyyyyyyyyyy@mahmud.db.elephantsql.com/zzzzzz`)
+  - DATABASE_URL (something like this `postgres://xxxxxx:yyyyyyyyyyyyyy@mahmud.db.elephantsql.com/zzzzzz`)
 - add following environment variable to you GitHub Actions:
   - PLAYWRIGHT_TEST_BASE_URL (the URL where the application is running in the Vercel)
 
