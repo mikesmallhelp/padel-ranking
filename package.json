@@ -10,8 +10,7 @@
     "test:unit-watch": "jest --watch",
     "test:unit": "jest",
     "test:e2e-initial-content": "playwright test ./tests/e2e/test-initial-content.test.ts",
-    "test:e2e-adding-data": "playwright test ./tests/e2e/test-adding-data.test.ts",
-    "post-update": "echo \"codesandbox preview only, need an update\" && yarn upgrade --latest"
+    "test:e2e-adding-data": "playwright test ./tests/e2e/test-adding-data.test.ts"
   },
   "dependencies": {
     "@emotion/cache": "latest",

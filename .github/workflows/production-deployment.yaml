@@ -44,5 +44,5 @@ jobs:
     - name: Run tests for initial database
       run: npm run test:e2e-initial-content
     - name: Run tests which add data
-      run: npm run e2e-adding-data
+      run: npm run test:e2e-adding-data
 
