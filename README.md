@@ -57,14 +57,6 @@ Then push your database schema to the database:
 npx prisma db push
 ```
 
-Generate the Prisma client
-
-```
-npx prisma generate
-```
-
-Note: the Prisma client is under the node_modules folder and not in the Git.
-
 ## Development
 
 Start the application:
