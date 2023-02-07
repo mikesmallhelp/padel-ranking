@@ -40,7 +40,7 @@ Good introduction to the Next.js development is for example [How to Build a Full
 - npm
 - npx
 - PostreSQL database
-  - padel-ranking/.env file configures the local database connection (change this for you value)
+  - padel-ranking/.env file configures the local database connection (replace this with your value)
 - psql client
 
 ### Installation
@@ -105,15 +105,16 @@ The file `.github/workflows/production-deployment.yaml` contains following jobs:
 
 [More information about the Vercel deployment can be found here](https://vercel.com/guides/how-can-i-use-github-actions-with-vercel)
 
-### Initial tasks
+### Your own deployment is done with these phases:
 
-- fork your own repo
+- fork your own repo from the padel-ranking repository
+- create you own Vercel account
 - add following secrets to your GitHub Actions:
   - VERCEL_ORG_ID
   - VERCEL_PROJECT_ID
   - VERCEL_TOKEN
   - DATABASE_URL (something like this `postgres://xxxxxx:yyyyyyyyyyyyyyy@mahmud.db.elephantsql.com/zzzzzz`)
 - add following environment variable to you GitHub Actions:
-  - PLAYWRIGHT_TEST_BASE_URL (the URL where the project is running)
+  - PLAYWRIGHT_TEST_BASE_URL (the URL where the application is running in the Vercel)
 
 
