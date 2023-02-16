@@ -116,5 +116,12 @@ The file `.github/workflows/production-deployment.yaml` contains following jobs:
   - DATABASE_URL (something like this `postgres://xxxxxx:yyyyyyyyyyyyyy@mahmud.db.elephantsql.com/zzzzzz`)
 - add following environment variable to you GitHub Actions:
   - PLAYWRIGHT_TEST_BASE_URL (the URL where the application is running in the Vercel)
+  
+ ### Backlog
+ 
+ - Gmail authentication
+ - possibility to create the teams
+ - lottery of the teams
+ - possibility to add the game result without the Internet connection
 
 
