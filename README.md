@@ -122,6 +122,6 @@ The file `.github/workflows/production-deployment.yaml` contains following jobs:
  - Gmail authentication
  - possibility to create the teams
  - lottery of the teams
- - possibility to add the game results etc. without the Internet connection
+ - possibility to add the game results etc. without the Internet connection (when the connection comes back the data is synchronized)
 
 
