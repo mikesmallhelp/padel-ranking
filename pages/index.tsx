@@ -52,24 +52,18 @@ const PadelGamesContainer = ({ players, gameResults }: { players: Player[], game
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>{error.message}</div>;
 
-  if (!user) {
-    return (
-      <a href="/api/auth/login">Login</a>
-    )
-  } else {
-    return (
-      <>
-        <br></br>
-        <a href="/api/auth/logout">Logout</a>
-        <br></br>
-        <h2>{user?.name}</h2>
-        <p>{user?.email}</p>
-        <Dashboard title="Padel-pelit">
-          <PadelGames players={players} gameResults={gameResults} />
-        </Dashboard>
-      </>
-    )
-  }
+  return (
+    <>
+      <br></br>
+      <a href="/api/auth/logout">Logout</a>
+      <br></br>
+      <h2>{user?.name}</h2>
+      <p>{user?.email}</p>
+      <Dashboard title="Padel-pelit">
+        <PadelGames players={players} gameResults={gameResults} />
+      </Dashboard>
+    </>
+  )
 }
 
 export default PadelGamesContainer;
