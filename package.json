@@ -13,6 +13,7 @@
     "test:e2e-adding-data": "playwright test ./tests/e2e/test-adding-data.test.ts"
   },
   "dependencies": {
+    "@auth0/nextjs-auth0": "^2.4.0",
     "@emotion/cache": "latest",
     "@emotion/react": "latest",
     "@emotion/server": "latest",
