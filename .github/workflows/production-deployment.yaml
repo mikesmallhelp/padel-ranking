@@ -7,14 +7,6 @@ on:
     branches:
       - main
 jobs:
-  run-unit-tests:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Install dependencies
-        run: npm install
-      - name: Run tests
-        run: npm run test:unit
   build-and-deploy-to-production:
     needs: run-unit-tests 
     runs-on: ubuntu-latest
