@@ -111,9 +111,7 @@ const Dashboard = ({ children, title }: { children: JSX.Element, title: string }
               <MenuIcon />
             </IconButton>
             <Typography
-              component="h1"
               variant="h6"
-              color="inherit"
               noWrap
               sx={{ flexGrow: 1 }}
               data-testid="dashboardTitle"

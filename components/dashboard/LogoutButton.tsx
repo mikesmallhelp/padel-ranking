@@ -5,12 +5,8 @@ const LogoutButton = ({ }: {}) => {
   return (
     <Button color="inherit" href="/api/auth/logout">
       <Typography
-        component="h2"
         variant="h6"
-        color="inherit"
-        noWrap
         sx={{ textTransform: "none" }}
-        data-testid="dashboardTitle"
       >
         Logout
       </Typography>

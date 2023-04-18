@@ -15,12 +15,9 @@ const Username = ({ }: {}) => {
 
     return (
         <Typography
-            component="h1"
             variant="h6"
-            color="inherit"
             noWrap
-            sx={{ flexGrow: 1, marginRight: "20px" }}
-            data-testid="dashboardTitle"
+            sx={{ marginRight: "20px" }}
         >
             {text}
         </Typography>
