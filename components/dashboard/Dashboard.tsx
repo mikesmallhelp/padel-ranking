@@ -14,6 +14,8 @@ import Link from "@mui/material/Link";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import { menuItems } from "./menuItems";
+import Username from "./Username";
+import LogoutButton from "./LogoutButton";
 
 function Copyright(props: any) {
   return (
@@ -109,15 +111,20 @@ const Dashboard = ({ children, title }: { children: JSX.Element, title: string }
               <MenuIcon />
             </IconButton>
             <Typography
-              component="h1"
               variant="h6"
-              color="inherit"
               noWrap
               sx={{ flexGrow: 1 }}
               data-testid="dashboardTitle"
             >
               {title}
             </Typography>
+            <Box sx={{
+              display: "flex",
+              alignItems: "center"
+            }}>
+              <Username />
+              <LogoutButton />
+            </Box>
           </Toolbar>
         </AppBar>
         <Drawer variant="permanent" open={open}>
