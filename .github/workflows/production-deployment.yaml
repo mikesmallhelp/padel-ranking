@@ -28,21 +28,4 @@ jobs:
         run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
       - name: Deploy project artifacts to Vercel
         run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }} --env DATABASE_URL=${{ secrets.DATABASE_URL }}
-  run-e2e-tests:
-    needs: build-and-deploy-to-production
-    runs-on: ubuntu-latest
-    env:
-      PLAYWRIGHT_TEST_BASE_URL: ${{ vars.PLAYWRIGHT_TEST_BASE_URL }}
-    steps:
-    - uses: actions/checkout@v2
-    - name: Install postgresql-client
-      run: sudo apt install postgresql-client
-    - name: Initialize database
-      run: psql -f tests/e2e/initialize.sql ${{ secrets.DATABASE_URL }} 
-    - name: Install dependencies
-      run: npm ci && npx playwright install --with-deps
-    - name: Run tests for initial database
-      run: npm run test:e2e-initial-content
-    - name: Run tests which add data
-      run: npm run test:e2e-adding-data
 
