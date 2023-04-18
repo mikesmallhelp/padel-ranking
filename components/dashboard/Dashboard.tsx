@@ -120,11 +120,9 @@ const Dashboard = ({ children, title }: { children: JSX.Element, title: string }
             >
               {title}
             </Typography>
-            <Box sx={{ flexGrow: 1 }} />
             <Box sx={{
               display: "flex",
-              alignItems: "center",
-              justifyContent: "flex-start"
+              alignItems: "center"
             }}>
               <Username />
               <LogoutButton />
