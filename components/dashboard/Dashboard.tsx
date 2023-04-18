@@ -14,7 +14,8 @@ import Link from "@mui/material/Link";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import { menuItems } from "./menuItems";
-import Button from '@mui/material/Button';
+import Username from "./Username";
+import LogoutButton from "./LogoutButton";
 
 function Copyright(props: any) {
   return (
@@ -119,17 +120,8 @@ const Dashboard = ({ children, title }: { children: JSX.Element, title: string }
             >
               {title}
             </Typography>
-            <Button color="inherit" href="/api/auth/logout">
-              <Typography
-                component="h2"
-                variant="h6"
-                color="inherit"
-                noWrap
-                sx={{ textTransform: "none" }}
-                data-testid="dashboardTitle"
-              >
-                Logout
-              </Typography></Button>
+            <Username/>
+            <LogoutButton/>
           </Toolbar>
         </AppBar>
         <Drawer variant="permanent" open={open}>

@@ -4,8 +4,6 @@ import Dashboard from "../components/dashboard/Dashboard";
 import Player from "../types/Player";
 import GameResult from "../types/GameResult";
 import PadelGames from "../components/padel-games/PadelGames";
-import { useUser } from '@auth0/nextjs-auth0/client';
-import Link from '@mui/material/Link';
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const players = await prisma.player.findMany({
@@ -47,24 +45,10 @@ export const getServerSideProps: GetServerSideProps = async () => {
 };
 
 const PadelGamesContainer = ({ players, gameResults }: { players: Player[], gameResults: GameResult[] }) => {
-  const { user, error, isLoading } = useUser();
-
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>{error.message}</div>;
-
   return (
-    <>
-      <br></br>
-      <a href="/api/auth/logout">Logout</a>
-      <br></br>
-      <Link href="/api/auth/logout">Logout</Link>
-      <br></br>
-      <h2>{user?.name}</h2>
-      <p>{user?.email}</p>
       <Dashboard title="Padel-pelit">
         <PadelGames players={players} gameResults={gameResults} />
       </Dashboard>
-    </>
   )
 }
 
