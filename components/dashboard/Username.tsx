@@ -19,7 +19,7 @@ const Username = ({ }: {}) => {
             variant="h6"
             color="inherit"
             noWrap
-            sx={{ flexGrow: 1 }}
+            sx={{ flexGrow: 1, marginRight: "20px" }}
             data-testid="dashboardTitle"
         >
             {text}

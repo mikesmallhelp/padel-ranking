@@ -120,8 +120,15 @@ const Dashboard = ({ children, title }: { children: JSX.Element, title: string }
             >
               {title}
             </Typography>
-            <Username/>
-            <LogoutButton/>
+            <Box sx={{ flexGrow: 1 }} />
+            <Box sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "flex-start"
+            }}>
+              <Username />
+              <LogoutButton />
+            </Box>
           </Toolbar>
         </AppBar>
         <Drawer variant="permanent" open={open}>
