@@ -5,17 +5,28 @@ import AddPlayerContainer from "../../pages/players-container";
 import "@testing-library/jest-dom";
 import { players } from "../../lib/tests-lib/mock-data";
 import { checkDashboard } from "../../lib/tests-lib/common-test-utils";
+import { UserProvider } from '@auth0/nextjs-auth0/client';
 
 jest.mock("next/router", () => require("next-router-mock"));
+jest.mock("@auth0/nextjs-auth0/client", () => ({ UserProvider: ({ children }: { children: JSX.Element }) => (<div>{children}</div>),
+                                                 useUser: () => {
+                                                    return {
+                                                        user: {name: "testName"},
+                                                        error: null,
+                                                        isLoading: false,
+                                                    }
+                                                  }
+                                               }
+));
 
 describe("players-container.tsx", () => {
     it("check the dashboard", () => {
-        render(<AddPlayerContainer players={players} />);
+        render(<UserProvider><AddPlayerContainer players={players} /></UserProvider>);
         checkDashboard({ dashboardTitle: "Pelaajat" });
     });
 
     it("check the players list", () => {
-        render(<AddPlayerContainer players={players} />);
+        render(<UserProvider><AddPlayerContainer players={players} /></UserProvider>);
 
         expect(screen.getByTestId("playerListTitle").textContent).toContain("Pelaajat");
         expect(screen.getByTestId("playerListColumnTitleName").textContent).toContain("Nimi");
@@ -24,7 +35,7 @@ describe("players-container.tsx", () => {
     });
 
     it("check adding a new player", async () => {
-        render(<AddPlayerContainer players={players} />);
+        render(<UserProvider><AddPlayerContainer players={players} /></UserProvider>);
 
         expect(screen.getByTestId("addPlayerTitle").textContent).toContain("Lisää pelaaja");
         expect(screen.getByTestId("playerNameTextField").textContent).toContain("Nimi");

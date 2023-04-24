@@ -3,15 +3,28 @@ import PadelGamesContainer from "../../pages/index";
 import "@testing-library/jest-dom";
 import { players, gameResults } from "../../lib/tests-lib/mock-data";
 import { checkDashboard } from "../../lib/tests-lib/common-test-utils";
+import { UserProvider } from '@auth0/nextjs-auth0/client';
+
+jest.mock("next/router", () => require("next-router-mock"));
+jest.mock("@auth0/nextjs-auth0/client", () => ({ UserProvider: ({ children }: { children: JSX.Element }) => (<div>{children}</div>),
+                                                 useUser: () => {
+                                                    return {
+                                                        user: {name: "testName"},
+                                                        error: null,
+                                                        isLoading: false,
+                                                    }
+                                                  }
+                                               }
+));
 
 describe("index.tsx", () => {
   it("check the dashboard", () => {
-    render(<PadelGamesContainer players={players} gameResults={gameResults} />);
+    render(<UserProvider><PadelGamesContainer players={players} gameResults={gameResults} /></UserProvider>);
     checkDashboard({dashboardTitle: "Padel-pelit"});
   })
 
   it("check the ranking", () => {
-    render(<PadelGamesContainer players={players} gameResults={gameResults} />);
+    render(<UserProvider><PadelGamesContainer players={players} gameResults={gameResults} /></UserProvider>);
 
     checkRankingTitles();
 
@@ -23,7 +36,7 @@ describe("index.tsx", () => {
   })  
 
   it("check the game results", () => {
-    render(<PadelGamesContainer players={players} gameResults={gameResults} />);
+    render(<UserProvider><PadelGamesContainer players={players} gameResults={gameResults} /></UserProvider>);
     
     checkGameResultsTitles();
     checkGameResult({gameNumber: 1, createdAt: "11.02.2022", team1: "Tommi & Ville", team2: "Jarkko & Joonas", result: "6 - 2"});

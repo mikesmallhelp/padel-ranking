@@ -5,17 +5,28 @@ import AddResultContainer from "../../pages/add-result-container";
 import "@testing-library/jest-dom";
 import { players } from "../../lib/tests-lib/mock-data";
 import { checkDashboard } from "../../lib/tests-lib/common-test-utils";
+import { UserProvider } from "@auth0/nextjs-auth0/client";
 
 jest.mock("next/router", () => require("next-router-mock"));
+jest.mock("@auth0/nextjs-auth0/client", () => ({ UserProvider: ({ children }: { children: JSX.Element }) => (<div>{children}</div>),
+                                                 useUser: () => {
+                                                    return {
+                                                        user: {name: "testName"},
+                                                        error: null,
+                                                        isLoading: false,
+                                                    }
+                                                  }
+                                               }
+));
 
 describe("add-result-container.tsx", () => {
     it("check the dashboard", () => {
-        render(<AddResultContainer players={players} />);
+        render(<UserProvider><AddResultContainer players={players} /></UserProvider>);
         checkDashboard({ dashboardTitle: "Lisää tulos" });
     })
 
     it("check the titles", () => {
-        render(<AddResultContainer players={players} />);
+        render(<UserProvider><AddResultContainer players={players} /></UserProvider>);
 
         expect(screen.getByTestId("teamResultTitleJoukkue 1").textContent).toContain("Joukkue 1");
         expect(screen.getByTestId("teamResultTitleJoukkue 2").textContent).toContain("Joukkue 2");
@@ -30,7 +41,7 @@ describe("add-result-container.tsx", () => {
     })
 
     it("check adding new result", () => {
-        render(<AddResultContainer players={players} />);
+        render(<UserProvider><AddResultContainer players={players} /></UserProvider>);
 
         addSelect({ buttonRoleIndex: 1, menuItemText: "Tommi" });
         addSelect({ buttonRoleIndex: 2, menuItemText: "Ville" });
@@ -41,7 +52,7 @@ describe("add-result-container.tsx", () => {
         addSelect({ buttonRoleIndex: 6, menuItemText: "0" });
 
         fireEvent.click(screen.getByRole("button", { name: "Lisää" }));
-        
+
         expect(fetchMock.mock.calls.length).toEqual(1);
         expect(fetchMock.mock.calls[0][0]).toEqual("/api/add-result");
         expect(fetchMock.mock.calls[0][1]).toEqual({
