@@ -1,5 +1,5 @@
 import { test, Page } from "@playwright/test";
-import { checkPlayerRanking, checkPlayer, checkGameResult } from "./test-utils";
+import { checkPlayerRanking, checkPlayer, checkGameResult, authenticate } from "./test-utils";
 import { format } from "date-fns";
 
 test("test adding the new game result", async ({ page, baseURL }) => {
@@ -8,6 +8,8 @@ test("test adding the new game result", async ({ page, baseURL }) => {
   }
 
   await page.goto(baseURL + "add-result-container");
+  await authenticate({page: page, password: process.env.E2E_TEST_PASSWORD});
+
   await addTeamResult({ page: page, teamNumber: "1", player1Name: "Tommi", player2Name: "Ville", points: "6" });
   await addTeamResult({ page: page, teamNumber: "2", player1Name: "Jarkko", player2Name: "Joonas", points: "3" });
   await page.getByTestId("addGameResultButton").click();
@@ -26,6 +28,8 @@ test("test adding the new player", async ({ page, baseURL }) => {
   }
 
   await page.goto(baseURL + "players-container");
+  await authenticate({page: page, password: process.env.E2E_TEST_PASSWORD});
+  
   await page.locator("input").fill("Olli");
   await page.locator("data-testid=addPlayerButton").click();
   await checkPlayer({ page: page, playerName: "Olli" });

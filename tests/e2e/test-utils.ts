@@ -1,5 +1,15 @@
 import { expect, Page } from "@playwright/test";
 
+export const authenticate = async ( { page, password }: { page: Page, password?: string }) => {
+    if (!password) {
+        throw Error("The password not defined!");
+      }
+
+    await page.getByLabel("Email address").fill("keith.reknan@gmail.com");
+    await page.getByLabel("Password").fill(password);
+    await page.locator('button[name="action"]').click();
+}
+
 export const checkPlayerRanking = async ({ page, playerName, games, points }: { page: Page, playerName: string, games: string, points: string }) => {
     expect(await page.locator("data-testid=" + playerName + "Name").textContent()).toContain(playerName);
     expect(await page.locator("data-testid=" + playerName + "Games").textContent()).toContain(games);
