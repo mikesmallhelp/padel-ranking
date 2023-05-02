@@ -7,8 +7,9 @@ test("test adding the new game result", async ({ page, baseURL }) => {
     throw Error("The base url not defined!");
   }
 
-  await page.goto(baseURL + "add-result-container");
+  await page.goto(baseURL);
   await authenticate({page: page, password: process.env.E2E_TEST_PASSWORD});
+  await page.goto(baseURL + "add-result-container");
 
   await addTeamResult({ page: page, teamNumber: "1", player1Name: "Tommi", player2Name: "Ville", points: "6" });
   await addTeamResult({ page: page, teamNumber: "2", player1Name: "Jarkko", player2Name: "Joonas", points: "3" });
@@ -27,8 +28,9 @@ test("test adding the new player", async ({ page, baseURL }) => {
     throw Error("The base url not defined!");
   }
 
-  await page.goto(baseURL + "players-container");
+  await page.goto(baseURL);
   await authenticate({page: page, password: process.env.E2E_TEST_PASSWORD});
+  await page.goto(baseURL + "players-container");
   
   await page.locator("input").fill("Olli");
   await page.locator("data-testid=addPlayerButton").click();
