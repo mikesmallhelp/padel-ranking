@@ -9,6 +9,7 @@
     "lint": "next lint",
     "test:unit-watch": "jest --watch",
     "test:unit": "jest",
+    "test:e2e-not-authenticated": "playwright test ./tests/e2e/test-not-authenticated.test.ts",
     "test:e2e-initial-content": "playwright test ./tests/e2e/test-initial-content.test.ts",
     "test:e2e-adding-data": "playwright test ./tests/e2e/test-adding-data.test.ts"
   },
