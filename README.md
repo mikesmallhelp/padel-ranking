@@ -123,7 +123,7 @@ The file `.github/workflows/production-deployment.yaml` contains following jobs:
   
  ### Backlog
  
- - Gmail authentication
+ - the support for the 7 points
  - possibility to create the teams
  - lottery of the teams
  - possibility to add the game results etc. without the Internet connection (when the connection comes back the data is synchronized)
