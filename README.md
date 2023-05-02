@@ -1,14 +1,18 @@
-# Padel ranking application version 24.4.2023 18:32
+# Padel ranking application
 
 ## Application
 
-With the simple padel ranking application you can register game results and the application calculates ranking. 
+With a simple padel ranking application you can register game results and the application calculates ranking. 
 
-Example of the player ranking calculation: When the team of the player wins four sets his ranking goes up with four points.
+Example of a player ranking calculation: When a team of the player wins four sets his ranking goes up with four points.
+
+First you have to log into the application with Auth0 or Gmail authentication:
+
+![Log in](doc/login.png)
 
 At home page you can see the ranking and the played games:
 
-![First page](doc/padel-games.png)
+![Home page](doc/padel-games.png)
 
 You can add a new result in this page:
 
