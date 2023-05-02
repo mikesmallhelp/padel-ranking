@@ -3,42 +3,43 @@ import { checkPlayerRanking, checkPlayer, checkGameResult, authenticate } from "
 import { format } from "date-fns";
 
 test("test adding the new game result", async ({ page, baseURL }) => {
-  if (!baseURL) {
-    throw Error("The base url not defined!");
-  }
-
-  await page.goto(baseURL);
-  await authenticate({page: page, password: process.env.E2E_TEST_PASSWORD});
-  await page.goto(baseURL + "add-result-container");
+  await checkBaseUrlAndDoAuthentication({ page: page, baseURL: baseURL, contextPath: "add-result-container" });
 
   await addTeamResult({ page: page, teamNumber: "1", player1Name: "Tommi", player2Name: "Ville", points: "6" });
   await addTeamResult({ page: page, teamNumber: "2", player1Name: "Jarkko", player2Name: "Joonas", points: "3" });
   await page.getByTestId("addGameResultButton").click();
 
-  await checkPlayerRanking({page: page, playerName: "Tommi", games: "3", points: "18"});
-  await checkPlayerRanking({page: page, playerName: "Ville", games: "3", points: "18"});
-  await checkPlayerRanking({page: page, playerName: "Jarkko", games: "3", points: "6"});
-  await checkPlayerRanking({page: page, playerName: "Joonas", games: "3", points: "6"});
-  await checkGameResult({page: page, createdAt: format(new Date(), "dd.MM.yyyy"), 
-                        team1: "Tommi & Ville", team2: "Jarkko & Joonas", result: "6 - 3"});
+  await checkPlayerRanking({ page: page, playerName: "Tommi", games: "3", points: "18" });
+  await checkPlayerRanking({ page: page, playerName: "Ville", games: "3", points: "18" });
+  await checkPlayerRanking({ page: page, playerName: "Jarkko", games: "3", points: "6" });
+  await checkPlayerRanking({ page: page, playerName: "Joonas", games: "3", points: "6" });
+  await checkGameResult({
+    page: page, createdAt: format(new Date(), "dd.MM.yyyy"),
+    team1: "Tommi & Ville", team2: "Jarkko & Joonas", result: "6 - 3"
+  });
 });
 
 test("test adding the new player", async ({ page, baseURL }) => {
-  if (!baseURL) {
-    throw Error("The base url not defined!");
-  }
+  await checkBaseUrlAndDoAuthentication({ page: page, baseURL: baseURL, contextPath: "players-container" });
 
-  await page.goto(baseURL);
-  await authenticate({page: page, password: process.env.E2E_TEST_PASSWORD});
-  await page.goto(baseURL + "players-container");
-  
   await page.locator("input").fill("Olli");
   await page.locator("data-testid=addPlayerButton").click();
   await checkPlayer({ page: page, playerName: "Olli" });
 
-  await page.goto(baseURL);
+  await page.goto(baseURL!);
   await checkPlayerRanking({ page: page, playerName: "Olli", games: "0", points: "0" });
 });
+
+const checkBaseUrlAndDoAuthentication = async ({ page, baseURL, contextPath }: { page: Page, baseURL?: string, contextPath: string }) => {
+  if (!baseURL) {
+    throw Error("The base url not defined!");
+  }
+
+  // we have to first go to the base url, because only this works in the Vercel environment
+  await page.goto(baseURL);
+  await authenticate({ page: page, password: process.env.E2E_TEST_PASSWORD });
+  await page.goto(baseURL + contextPath);
+}
 
 const addTeamResult = async ({ page, teamNumber, player1Name, player2Name, points }:
   { page: Page, teamNumber: string, player1Name: string, player2Name: string, points: string }) => {
