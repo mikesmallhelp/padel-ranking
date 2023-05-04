@@ -5,7 +5,7 @@ import AddPlayerContainer from "../../pages/players-container";
 import "@testing-library/jest-dom";
 import { players } from "../../lib/tests-lib/mock-data";
 import { checkDashboard } from "../../lib/tests-lib/common-test-utils";
-import { UserProvider } from '@auth0/nextjs-auth0/client';
+import { UserProvider } from "@auth0/nextjs-auth0/client";
 
 jest.mock("next/router", () => require("next-router-mock"));
 jest.mock("@auth0/nextjs-auth0/client", () => ({ UserProvider: ({ children }: { children: JSX.Element }) => (<div>{children}</div>),

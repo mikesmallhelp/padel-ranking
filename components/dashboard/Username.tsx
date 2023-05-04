@@ -1,5 +1,5 @@
 import Typography from "@mui/material/Typography";
-import { useUser } from '@auth0/nextjs-auth0/client';
+import { useUser } from "@auth0/nextjs-auth0/client";
 
 const Username = ({ }: {}) => {
     const { user, error, isLoading } = useUser();
