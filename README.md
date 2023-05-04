@@ -153,9 +153,8 @@ See more in the [auth0 Next.js guide](https://auth0.com/docs/quickstart/webapp/n
 
 ## Backlog
  
- - the support for the 7 points
  - possibility to create the teams
  - lottery of the teams
- - possibility to add the game results etc. without the Internet connection (when the connection comes back the data is synchronized)
+ - possibility to add the game results etc. without the Internet connection (when the connection comes back the data is synchronized). In one Padel hall the Internet connection wasn't working.
 
 
