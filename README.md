@@ -52,12 +52,11 @@ Good introduction to Next.js development is for example [How to Build a Fullstac
 
 You need your .env file for local development. This file is in .gitignore file and is not put in the Git.
 
-Copy .env-example file and you get .env file for the local development. Change your values in the file.
+Copy from [.env-example](.env-example) file and you get your .env file for the local development. Change your values in the file.
 
 #### auth0 account
 
-Register to auth0, follow the instructions in the [auth0 Next.js guide](https://auth0.com/docs/quickstart/webapp/nextjs/01-login) and download your auth0 sample application to get your auth0 enviroment variables. 
-
+Register to auth0, follow the instructions in the [auth0 Next.js guide](https://auth0.com/docs/quickstart/webapp/nextjs/01-login) and download your auth0 sample application to get your personal auth0 enviroment variable values.
 
 ### Installation
 
