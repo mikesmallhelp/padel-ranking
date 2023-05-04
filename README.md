@@ -36,7 +36,7 @@ The technology stack is:
 - Playwright for the e2e tests
 - Vercel cloud environment
 
-Good introduction to Next.js development is for example [How to Build a Fullstack App with Next.js, Prisma, and PostgreSQL](https://vercel.com/guides/nextjs-prisma-postgres)
+Good introduction to Next.js development is for example [How to Build a Fullstack App with Next.js, Prisma, and PostgreSQL](https://vercel.com/guides/nextjs-prisma-postgres).
 
 ## Installation
 
@@ -119,7 +119,7 @@ The file [.github/workflows/production-deployment.yaml](.github/workflows/produc
 - build-and-deploy-to-production
 - run-e2e-tests
 
-[More information about the Vercel deployment and environment variables can be found here](https://vercel.com/guides/how-can-i-use-github-actions-with-vercel)
+More information about the Vercel deployment and environment variables can be found [here](https://vercel.com/guides/how-can-i-use-github-actions-with-vercel).
 
 ### Your own deployment is done with these phases:
 
@@ -147,9 +147,9 @@ When I added the auth0 authencation, I
 - run the `npm install @auth0/nextjs-auth0` command
 - added a [pages/_app.js](pages/_app.js) file
 - added a [middleware.ts](middleware.ts) file
-- add a [pages/api/auth/[...auth0].js](pages/api/auth/[...auth0].js) file
+- added a [pages/api/auth/[...auth0].js](pages/api/auth/[...auth0].js) file
 
-See more in the [auth0 Next.js guide](https://auth0.com/docs/quickstart/webapp/nextjs/01-login)
+See more in the [auth0 Next.js guide](https://auth0.com/docs/quickstart/webapp/nextjs/01-login).
 
 ## Backlog
  
