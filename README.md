@@ -145,7 +145,7 @@ The file [.github/workflows/production-deployment.yaml](.github/workflows/produc
 When I added the auth0 authencation, I
 
 - run the `npm install @auth0/nextjs-auth0` command
-- added a [_app.js](_app.js) file
+- added a [pages/_app.js](pages/_app.js) file
 - added a [middleware.ts](middleware.ts) file
 - add a [pages/api/auth/[...auth0].js](pages/api/auth/[...auth0].js) file
 
