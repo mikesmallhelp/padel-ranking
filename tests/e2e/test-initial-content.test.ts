@@ -34,5 +34,5 @@ const checkBaseUrlAndDoAuthentication = async ({ page, baseURL, contextPath }: {
   }
 
   await page.goto(baseURL + contextPath);
-  await authenticate({ page: page, password: process.env.E2E_TEST_PASSWORD });
+  await authenticate({ page: page, username: process.env.AUTH0_E2E_TEST_USERNAME, password: process.env.AUTH0_E2E_TEST_PASSWORD });
 }

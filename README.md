@@ -6,11 +6,11 @@ With a simple padel ranking application you can register game results and the ap
 
 Example of a player ranking calculation: When a team of the player wins four sets his ranking goes up with four points.
 
-First you have to log into the application with Auth0 or Gmail authentication:
+When you use the application, you first log into the application with Auth0 or Gmail authentication:
 
 ![Log in](doc/login.png)
 
-At home page you can see the ranking and the played games:
+At a home page you can see the ranking and played games:
 
 ![Home page](doc/padel-games.png)
 
@@ -31,6 +31,7 @@ The technology stack is:
 - MUI dashboard template
 - Prisma for the database access
 - Next.js api routes
+- auth0 authentication
 - Jest and React Testing Library for the unit tests
 - Playwright for the e2e tests
 - Vercel cloud environment

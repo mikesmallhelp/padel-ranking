@@ -1,9 +1,12 @@
 import { expect, Page } from "@playwright/test";
 
-export const authenticate = async ( { page, password }: { page: Page, password?: string }) => {
+export const authenticate = async ({ page, username, password }: { page: Page, username?: string, password?: string }) => {
+    if (!username) {
+        throw Error("The username not defined!");
+    }
     if (!password) {
         throw Error("The password not defined!");
-      }
+    }
 
     await page.getByLabel("Email address").fill("keith.reknan@gmail.com");
     await page.getByLabel("Password").fill(password);

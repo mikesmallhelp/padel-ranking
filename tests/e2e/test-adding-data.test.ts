@@ -37,7 +37,7 @@ const checkBaseUrlAndDoAuthentication = async ({ page, baseURL, contextPath }: {
 
   // we have to first go to the base url, because only this works in the Vercel environment
   await page.goto(baseURL);
-  await authenticate({ page: page, password: process.env.E2E_TEST_PASSWORD });
+  await authenticate({ page: page, username: process.env.AUTH0_E2E_TEST_USERNAME, password: process.env.AUTH0_E2E_TEST_PASSWORD });
   await page.goto(baseURL + contextPath);
 }
 

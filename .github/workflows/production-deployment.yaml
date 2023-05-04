@@ -33,7 +33,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       PLAYWRIGHT_TEST_BASE_URL: ${{ vars.PLAYWRIGHT_TEST_BASE_URL }}
-      E2E_TEST_PASSWORD: ${{ secrets.E2E_TEST_PASSWORD }}
+      AUTH0_E2E_TEST_USERNAME: ${{ secrets.AUTH0_E2E_TEST_USERNAME }}
+      AUTH0_E2E_TEST_PASSWORD: ${{ secrets.AUTH0_E2E_TEST_PASSWORD }}
     steps:
     - uses: actions/checkout@v2
     - name: Install postgresql-client
