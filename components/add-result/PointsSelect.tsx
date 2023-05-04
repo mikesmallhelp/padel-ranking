@@ -7,7 +7,7 @@ import { ReactNode } from "react";
 
 const PointsSelect = ({ title, teamResultTestTitle, handleChange }: { title: string, teamResultTestTitle: string, 
     handleChange: (event: SelectChangeEvent<string>, child: ReactNode) => void }) => {
-    const pointsValues = [0, 1, 2, 3, 4, 5, 6];
+    const pointsValues = [0, 1, 2, 3, 4, 5, 6, 7];
 
     return (
         <FormControl fullWidth>
