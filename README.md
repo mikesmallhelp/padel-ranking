@@ -113,7 +113,7 @@ postgres://mike:mike@localhost:5432/postgres
 
 ## Deployment to Vercel
 
-The file `.github/workflows/production-deployment.yaml` contains following jobs:
+The file [.github/workflows/production-deployment.yaml](.github/workflows/production-deployment.yaml) contains following jobs:
 
 - run-unit-tests
 - build-and-deploy-to-production
@@ -142,12 +142,12 @@ The file `.github/workflows/production-deployment.yaml` contains following jobs:
 
 ## About auth0 authentication
 
-The auth0 authentication is really simple:
+When I added the auth0 authencation, I
 
-- the package.json file contains `@auth0/nextjs-auth0` dependency
-- add a _app.js file like in this project (`UserProvider` wraps the root element)
-- add a middleware.ts file like in this project
-- add a pages/api/auth/[...auth0].js file
+- run the `npm install @auth0/nextjs-auth0` command
+- added a [_app.js](_app.js) file
+- added a [middleware.ts](middleware.ts) file
+- add a [pages/api/auth/[...auth0].js](pages/api/auth/[...auth0].js) file
 
 See more in the [auth0 Next.js guide](https://auth0.com/docs/quickstart/webapp/nextjs/01-login)
 
