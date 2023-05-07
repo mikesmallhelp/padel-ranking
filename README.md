@@ -144,6 +144,8 @@ More information about the Vercel deployment and environment variables can be fo
 
 When I added the auth0 authencation, I
 
+- created the auth0 account
+- downloaded the auth0 example application and took my personal environment variables
 - run the `npm install @auth0/nextjs-auth0` command
 - added a [pages/_app.js](pages/_app.js) file
 - added a [middleware.ts](middleware.ts) file
