@@ -8,6 +8,7 @@ import Router from "next/router";
 
 const AddPlayer = ({ }: {}) => {
     const [playerName, setPlayerName] = React.useState("");
+    const [errorMessage, setErrorMessage] = React.useState("");
 
     const handleButtonClick = async (e: React.SyntheticEvent) => {
         e.preventDefault();
@@ -22,6 +23,7 @@ const AddPlayer = ({ }: {}) => {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(body),
             });
+            setErrorMessage("Error! Please contact help desk.");
             setPlayerName("");
             await Router.push("/players-container");
         } catch (error) {
@@ -48,6 +50,7 @@ const AddPlayer = ({ }: {}) => {
                 <Grid item container xs={12} justifyContent="flex-end">
                     <Button variant="contained" onClick={handleButtonClick} data-testid="addPlayerButton">Lisää</Button>
                 </Grid>
+                <Grid>{errorMessage}</Grid>
             </Grid>
         </React.Fragment>
     )
