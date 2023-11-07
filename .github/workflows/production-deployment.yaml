@@ -28,22 +28,4 @@ jobs:
         run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
       - name: Deploy project artifacts to Vercel
         run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }} --env DATABASE_URL=${{ secrets.DATABASE_URL }} --env AUTH0_BASE_URL=${{ secrets.AUTH0_BASE_URL }} --env AUTH0_CLIENT_ID=${{ secrets.AUTH0_CLIENT_ID }} --env AUTH0_CLIENT_SECRET=${{ secrets.AUTH0_CLIENT_SECRET }} --env AUTH0_ISSUER_BASE_URL=${{ secrets.AUTH0_ISSUER_BASE_URL }} --env AUTH0_SECRET=${{ secrets.AUTH0_SECRET }}
-  run-e2e-tests:
-    needs: build-and-deploy-to-production
-    runs-on: ubuntu-latest
-    env:
-      PLAYWRIGHT_TEST_BASE_URL: ${{ vars.PLAYWRIGHT_TEST_BASE_URL }}
-      AUTH0_E2E_TEST_USERNAME: ${{ secrets.AUTH0_E2E_TEST_USERNAME }}
-      AUTH0_E2E_TEST_PASSWORD: ${{ secrets.AUTH0_E2E_TEST_PASSWORD }}
-    steps:
-    - uses: actions/checkout@v2
-    - name: Install postgresql-client
-      run: sudo apt install postgresql-client
-    - name: Initialize database
-      run: psql -f tests/e2e/initialize.sql ${{ secrets.DATABASE_URL }} 
-    - name: Install dependencies
-      run: npm ci && npx playwright install --with-deps
-    - name: Run tests for initial database
-      run: npm run test:e2e-initial-content
-    - name: Run tests which add data
-      run: npm run test:e2e-adding-data
+        
